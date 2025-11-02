@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لگاریتم، ادراک و اطلاعات - روح الله زندیه</title>
+    <meta name="description" content="بررسی رابطه لگاریتمی بین تحریکات فیزیکی و ادراک انسان از دیدگاه روان‌فیزیک">
+    <meta name="keywords" content="لگاریتم، ادراک، روان‌فیزیک، فشنر، وبر، ریاضیات، فلسفه، روانشناسی">
+    
+    <script>
+        // Prevent FOUC by setting theme immediately
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/styles/portfolio.css">
+    <link rel="stylesheet" href="../../assets/styles/blog.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- MathJax -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">Rohola Zandie</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">خانه</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../../persian-blog.html">بلاگ</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-link nav-link theme-toggle" id="themeToggle">
+                            <i data-lucide="sun" class="icon-light"></i>
+                            <i data-lucide="moon" class="icon-dark"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Back to Blog Link -->
+            <a href="../../persian-blog.html" class="back-to-blog">
+                <i data-lucide="arrow-right"></i>
+                بازگشت به بلاگ
+            </a>
+
+            <!-- Post Header -->
+            <header class="post-header">
+                <h1 class="post-title">لگاریتم، ادراک و اطلاعات</h1>
+                <div class="post-meta">
+                    <div class="post-meta-item">
+                        <i data-lucide="calendar"></i>
+                        <span>نوامبر ۲۰۲۵</span>
+                    </div>
+                    <div class="post-meta-item">
+                        <i data-lucide="user"></i>
+                        <span>روح الله زندیه</span>
+                    </div>
+                    <div class="post-meta-item">
+                        <i data-lucide="clock"></i>
+                        <span>۱۵ دقیقه مطالعه</span>
+                    </div>
+                </div>
+                <div class="blog-tags justify-content-center">
+                    <span class="tag">ریاضیات</span>
+                    <span class="tag">ادراک</span>
+                    <span class="tag">فلسفه</span>
+                    <span class="tag">روانشناسی</span>
+                </div>
+            </header>
+
+            <!-- Post Content -->
+            <article class="post-content">
+                <blockquote class="text-center fst-italic">
+                    <p class="mb-2">شما نمی‌دانید چقدر شعر در محاسبهٔ یک جدول لگاریتم وجود دارد.</p>
+                    <footer class="blockquote-footer">کارل فریدریش گاوس</footer>
+                </blockquote>
+
+                <h2>مقدمه</h2>
+
+                <p>تا جایی که به خاطر دارم، پدرم همیشه مشکلات شنوایی داشت. به همین دلیل، هر از گاهی مجبور بود آزمایشی به نام «شنوایی‌نگار» (audiogram) انجام دهد. شنویایی‌نگار نموداری شبیه شکل بالاست است.</p>
+
+                <figure class="text-center my-4">
+                    <img src="../../assets/images/posts/logarithm-perception-information/audio.png" 
+                         class="img-fluid rounded" 
+                         alt="نمودار شنوایی‌نگار">
+                    <figcaption class="figure-caption mt-2">
+                        <strong>شکل ۱:</strong> نمونه‌ای از نمودار شنوایی‌نگار
+                    </figcaption>
+                </figure>
+
+                <p>روی محور افقی، فرکانس‌هایی از ۲۰ تا ۱۰٬۰۰۰ را می‌بینید (اگرچه انسان می‌تواند صداهایی تا ۲۰٬۰۰۰ هرتز را هم بشنود). اما محور عمودی سطح شنوایی را در واحدی به نام دسی‌بل (decibel) نشان می‌دهد. دسی‌بل به‌طور تحت‌اللفظی به‌معنای «ده بل (bel)» است، ولی خودِ «بل» یک واحد لگاریتمی است. این بدان معناست که ۴۰ دسی‌بل در واقع ده برابر قوی‌تر از ۳۰ دسی‌بل است! اما چرا باید این‌طور باشد؟ چرا از واحدی لگاریتمی برای اندازه‌گیری شنوایی استفاده می‌کنیم؟ جستجو برای پاسخ به این سؤال ما را به درکی عمیق از لگاریتم، مغز، ادراک و اطلاعات می‌رساند.</p>
+
+                <h2>فشنر و پایه‌گذاری روان‌فیزیک</h2>
+
+                <p>گوستاو تئودور فشنر (Gustav Theodor Fechner)، فیزیک‌دان، فیلسوف و روان‌شناس آلمانی، بنیان‌گذار آن چیزی است که امروزه به نام روان‌فیزیک (psychophysics) شناخته می‌شود. فشنر رابطهٔ میان تحریکات فیزیکی (physical stimuli) و احساسات یا ادراکات (sensations / perceptions) حاصل از آن‌ها را مورد مطالعه قرار داد. مطالعات او افق جدیدی برای درک ذهن انسان و ارتباط آن با جهان فیزیکی گشود.</p>
+
+                <p>فشنر شاگرد فیزیک‌دان و روان‌شناس دیگر آلمانی به نام ارنست هاینریش وبر (Ernst Heinrich Weber) بود. وبر مشاهده کرد که «حداقل افزایش در یک محرک که منجر به افزایش قابل‌درک در حس می‌شود، متناسب با اندازهٔ اولیهٔ آن محرک است». برای درک بهتر، به شکل زیر توجه کنید: در هر ستون مربع پایینی ۱۰ نقطه بیشتر از مربع بالایی دارد. اگرچه اختلاف تعداد نقاط در هر دو ستون یکسان است، اما ادراک ما از تفاوت در سمت چپ به وضوح آشکارتر از سمت راست است.</p>
+
+                <figure class="text-center my-4">
+                    <img src="../../assets/images/posts/logarithm-perception-information/Weber-Fechner_law.png" 
+                         class="img-fluid rounded" 
+                         alt="قانون وبر-فشنر">
+                    <figcaption class="figure-caption mt-2">
+                        <strong>شکل ۲:</strong> در هر ستون تعدد نقاط از پنل بالا به پایین فقط ۱۰ تا اضافه می‌شود، با این‌حال افزایش تعداد از ۱۰ به ۲۰ بسیار محسوس‌تر است تا از ۱۱۰ به ۱۲۰
+                    </figcaption>
+                </figure>
+
+                <h2>قانون فشنر و رابطه لگاریتمی</h2>
+
+                <p>در سال ۱۸۶۰، فشنر کتاب مهمی به نام عناصر روان‌فیزیک (Elemente der Psychophysik) منتشر کرد که در آن به بررسی ایده‌های بنیادین درباره‌ی احساسات انسانی پرداخت. او پیشنهاد داد که تغییرات حسی را بهتر می‌توان به‌عنوان «تضاد در مقیاس» درک کرد؛ یعنی تشخیص تغییرات بر اساس تفاوت‌های نسبی صورت می‌گیرد، نه مطلق.</p>
+
+                <p>فشنر مشاهده کرد که برای آن‌که تغییری در یک محرک (مثلاً روشنایی یا وزن) قابل درک باشد، آن تغییر باید نسبت ثابتی از محرک اولیه را تشکیل دهد. به عبارت دیگر:</p>
+
+                <div class="alert alert-primary my-4" role="alert">
+                    <strong>مغز یک آشکارساز تغییرات نسبی (ratio-based change detector) است.</strong>
+                </div>
+
+                <p>برای نمونه، اگر وزنه‌ای ۱ کیلوگرمی را به ۲ کیلوگرم افزایش دهیم، فوراً متوجه تغییر می‌شویم. اما اگر از ۱۰ کیلوگرم به ۱۱ کیلوگرم برویم، همان یک کیلو افزایش به‌سختی احساس می‌شود. برای اینکه تغییری مشابه در سناریوی دوم احساس شود، باید وزن دو برابر شود (از ۱۰ به ۲۰ کیلوگرم تغییر کند). این حداقل تغییر قابل درک، به عنوان تفاوت حداقل قابل احساس (just-noticeable difference یا JND) شناخته می‌شود.</p>
+
+                <p>فشنر نتیجه‌گیری می‌کند:</p>
+
+                <blockquote class="blockquote text-center my-4">
+                    <p>تغییر ادراکی نسبت معکوس با اندازه‌ی اولیه‌ی محرک دارد.</p>
+                </blockquote>
+
+                <p>این قانون به‌عنوان قانون فشنر (Fechner's Law) شناخته می‌شود.</p>
+
+                <h2>فرمول‌بندی ریاضی</h2>
+
+                <p>از دیدگاه ریاضی، اگر تغییر کوچکی در ادراک را با dp و محرک را با S نشان دهیم، رابطه به صورت زیر است:</p>
+
+                <div class="math-equation text-center my-4">
+                    $$dp = \alpha \frac{dS}{S}$$
+                </div>
+
+                <p>که در آن α یک ثابت تناسب است. اگر از مقدار اولیه S₀ شروع و به S برسیم، کل تغییر خواهد بود:</p>
+
+                <div class="math-equation text-center my-4">
+                    $$p(S)-p(S_0)=\alpha \int_{S_0}^S \frac{dS'}{S'}=\alpha \ln\left(\frac{S}{S_0}\right)$$
+                </div>
+
+                <p>یا ساده‌تر:</p>
+
+                <div class="math-equation text-center my-4">
+                    $$p=\alpha \ln \frac{S}{S_0}$$
+                </div>
+
+                <p>این رابطه نشان می‌دهد که نسبت میان تحریکات و ادراکات، یک رابطهٔ لگاریتمی (logarithmic) است. یعنی اگر مقدار محرک چند برابر شود، میزان ادراک فقط به‌صورت جمعی (خطی) افزایش می‌یابد. این اصل محدود به وزن یا شنوایی نیست، بلکه به همهٔ حواس انسانی تعمیم می‌یابد.</p>
+
+                <h2>کاربردهای گسترده</h2>
+
+                <p>برای مثال، سامانه‌ی بینایی ما می‌تواند روشنایی را در بازه‌ای از صفر تا بیش از ۱۰ به توان ۱۶ برابر تشخیص دهد، اما ادراک ما از روشنایی در این بازه تقریباً خطی افزایش می‌یابد. در عمل این بدان معناست که بینایی ما از تشخیص حتی یک فوتون (!) تا بیرون رفتن در یک روز آفتابی (۱۰ به توان ۱۶ فوتون) را می‌تواند مدیریت کند!</p>
+
+                <p>به همین شکل، حس چشایی نیز بر اساس مقیاس لگاریتمی کار می‌کند. زبان به تفاوت‌های کوچک در محرک‌های ضعیف بسیار حساس است، اما با افزایش شدت، تمایزپذیری کاهش می‌یابد. برای نمونه، سوکرالوز (sucralose) که یک شیرین‌کنندهٔ مصنوعی موجود در بسیاری از نوشابه‌های رژیمی است، تا ۶۰۰ برابر شیرین‌تر از شکر است، اما ادراک ما از افزایش شیرینی آن نسبتاً اندک است، چرا که ادراک به‌صورت لگاریتمی نسبت به شدت محرک افزایش می‌یابد.</p>
+
+                <h2>فراتر از حواس پنج‌گانه</h2>
+
+                <p>مقیاس‌بندی لگاریتمی فقط به پنج حس سنتی محدود نمی‌شود. بلکه شامل ادراک فاصله، زمان و حتی تصمیم‌گیری نیز می‌شود. طبق قانون هیک (Hick's Law)، زمانی که افراد برای انتخاب از بین N گزینه صرف می‌کنند، تنها به‌صورت لگاریتمی افزایش می‌یابد:</p>
+
+                <div class="alert alert-info my-4" role="alert">
+                    زمان واکنش ∝ لگاریتم (تعداد گزینه‌ها)
+                </div>
+
+                <p>این بدان معناست که اگر ده گزینه در برابر شما قرار بگیرد و شما در یک ثانیه تصمیم بگیرید، در برابر ۱۰۰ گزینه این مقدار نه ۱۰ برابر بلکه فقط دوبرابر می‌شود (رشد خطی).</p>
+
+                <h2>سوال بنیادی</h2>
+
+                <p>حال این سوال اساسی را مطرح می‌شود:</p>
+
+                <blockquote class="text-center">
+                    <p class="fs-4 fw-bold">چرا ادراک ما رابطه‌ای لگاریتمی با تحریکات دریافتی از جهان دارد؟</p>
+                </blockquote>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer text-center py-4">
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Rohola Zandie. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/scripts/portfolio.js"></script>
+    <script src="../../assets/scripts/blog.js"></script>
+    
+    <script>
+        // Force theme toggle to work
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Persian blog post loaded');
+            
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+                console.log('Lucide icons initialized');
+            }
+            
+            // Wait a bit longer then force initialize theme toggle
+            setTimeout(() => {
+                const themeToggle = document.getElementById('themeToggle');
+                if (themeToggle) {
+                    console.log('Theme toggle found, forcing initialization');
+                    
+                    // Remove any existing listeners
+                    const newToggle = themeToggle.cloneNode(true);
+                    themeToggle.parentNode.replaceChild(newToggle, themeToggle);
+                    
+                    // Add our own listener
+                    newToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        console.log('Theme toggle clicked - manual handler');
+                        
+                        const html = document.documentElement;
+                        const currentTheme = html.getAttribute('data-theme') || 'dark';
+                        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                        
+                        console.log('Switching theme from', currentTheme, 'to', newTheme);
+                        
+                        html.setAttribute('data-theme', newTheme);
+                        localStorage.setItem('theme', newTheme);
+                        
+                        // Update icons
+                        const sunIcon = newToggle.querySelector('[data-lucide="sun"]');
+                        const moonIcon = newToggle.querySelector('[data-lucide="moon"]');
+                        
+                        if (sunIcon && moonIcon) {
+                            if (newTheme === 'light') {
+                                sunIcon.style.display = 'none';
+                                moonIcon.style.display = 'inline';
+                            } else {
+                                sunIcon.style.display = 'inline';
+                                moonIcon.style.display = 'none';
+                            }
+                        }
+                        
+                        // Re-initialize Lucide icons
+                        if (typeof lucide !== 'undefined') {
+                            lucide.createIcons();
+                        }
+                    });
+                    
+                    // Set initial icon state
+                    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+                    const sunIcon = newToggle.querySelector('[data-lucide="sun"]');
+                    const moonIcon = newToggle.querySelector('[data-lucide="moon"]');
+                    
+                    if (sunIcon && moonIcon) {
+                        if (currentTheme === 'light') {
+                            sunIcon.style.display = 'none';
+                            moonIcon.style.display = 'inline';
+                        } else {
+                            sunIcon.style.display = 'inline';
+                            moonIcon.style.display = 'none';
+                        }
+                    }
+                }
+            }, 500);
+        });
+        
+        function sharePost() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'لگاریتم، ادراک و اطلاعات',
+                    text: 'بررسی رابطه لگاریتمی بین تحریکات فیزیکی و ادراک انسان',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('لینک کپی شد!');
+            }
+        }
+    </script>
+</body>
+</html>
