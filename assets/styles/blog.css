@@ -543,3 +543,20 @@
         justify-content: center;
     }
 }
+
+/* Persian Blog Specific Styles */
+.persian-blog .post-header {
+    padding: 2rem 0 1rem !important;
+}
+
+/* Main Post Image Sizing */
+.main-post-image img {
+    max-width: 60%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .main-post-image img {
+        max-width: 85%;
+    }
+}

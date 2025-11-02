@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="assets/styles/blog.css">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
-<body>
+<body class="persian-blog">
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">Rohola Zandie</a>
@@ -54,42 +54,41 @@
             <p class="lead">نوشته‌ها و مقالات در زمینه هوش مصنوعی، علوم کامپیوتر و تکنولوژی</p>
         </section>
 
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <div class="blog-posts">
-                    <div class="blog-card">
-                        <div class="blog-content p-4">
-                            <div class="blog-date text-muted mb-2">
-                                <i data-lucide="calendar" class="me-2"></i>
-                                ۲ نوامبر ۲۰۲۵
+        <!-- Blog Posts Grid -->
+        <section class="blog-posts" style="padding-top: 2rem;">
+            <div class="row g-4">
+                <!-- Persian Blog Post 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <img src="assets/images/posts/logarithm-perception-information/audio.png" alt="لگاریتم، ادراک و اطلاعات" class="img-fluid">
+                            <div class="blog-category">تحقیق</div>
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-meta">
+                                <span class="blog-date">نوامبر ۲۰۲۵</span>
+                                <span class="blog-author">روح الله زندیه</span>
                             </div>
-                            <h3 class="blog-title mb-3">
+                            <h3 class="blog-card-title">
                                 <a href="posts_fa/logarithm-perception-information/index.html">لگاریتم، ادراک و اطلاعات</a>
                             </h3>
-                            <p class="blog-excerpt text-muted mb-3">
+                            <p class="blog-card-excerpt">
                                 چرا ادراک ما رابطه‌ای لگاریتمی با تحریکات دریافتی از جهان دارد؟ سفری به دنیای روان‌فیزیک و قانون فشنر
                             </p>
-                            <div class="blog-tags mb-3">
-                                <span class="badge bg-primary me-1">ریاضیات</span>
-                                <span class="badge bg-secondary me-1">ادراک</span>
-                                <span class="badge bg-success me-1">فلسفه</span>
-                                <span class="badge bg-info">روانشناسی</span>
+                            <div class="blog-tags">
+                                <span class="tag">ریاضیات</span>
+                                <span class="tag">ادراک</span>
+                                <span class="tag">فلسفه</span>
+                                <span class="tag">روانشناسی</span>
                             </div>
-                            <div class="blog-meta d-flex justify-content-between align-items-center">
-                                <span class="reading-time text-muted">
-                                    <i data-lucide="clock" class="me-1"></i>
-                                    ۱۵ دقیقه مطالعه
-                                </span>
-                                <a href="posts_fa/logarithm-perception-information/index.html" class="btn btn-outline-primary btn-sm">
-                                    ادامه مطالعه
-                                    <i data-lucide="arrow-left" class="ms-1"></i>
-                                </a>
-                            </div>
+                            <a href="posts_fa/logarithm-perception-information/index.html" class="read-more">
+                                ادامه مطالعه <i data-lucide="arrow-left"></i>
+                            </a>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
     <footer class="footer text-center py-4">
@@ -101,79 +100,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/scripts/portfolio.js"></script>
     <script src="assets/scripts/blog.js"></script>
-    
-    <script>
-        // Force theme toggle to work
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Persian blog page loaded');
-            
-            // Initialize Lucide icons
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-                console.log('Lucide icons initialized');
-            }
-            
-            // Wait a bit longer then force initialize theme toggle
-            setTimeout(() => {
-                const themeToggle = document.getElementById('themeToggle');
-                if (themeToggle) {
-                    console.log('Theme toggle found, forcing initialization');
-                    
-                    // Remove any existing listeners
-                    const newToggle = themeToggle.cloneNode(true);
-                    themeToggle.parentNode.replaceChild(newToggle, themeToggle);
-                    
-                    // Add our own listener
-                    newToggle.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        console.log('Theme toggle clicked - manual handler');
-                        
-                        const html = document.documentElement;
-                        const currentTheme = html.getAttribute('data-theme') || 'dark';
-                        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                        
-                        console.log('Switching theme from', currentTheme, 'to', newTheme);
-                        
-                        html.setAttribute('data-theme', newTheme);
-                        localStorage.setItem('theme', newTheme);
-                        
-                        // Update icons
-                        const sunIcon = newToggle.querySelector('[data-lucide="sun"]');
-                        const moonIcon = newToggle.querySelector('[data-lucide="moon"]');
-                        
-                        if (sunIcon && moonIcon) {
-                            if (newTheme === 'light') {
-                                sunIcon.style.display = 'none';
-                                moonIcon.style.display = 'inline';
-                            } else {
-                                sunIcon.style.display = 'inline';
-                                moonIcon.style.display = 'none';
-                            }
-                        }
-                        
-                        // Re-initialize Lucide icons
-                        if (typeof lucide !== 'undefined') {
-                            lucide.createIcons();
-                        }
-                    });
-                    
-                    // Set initial icon state
-                    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-                    const sunIcon = newToggle.querySelector('[data-lucide="sun"]');
-                    const moonIcon = newToggle.querySelector('[data-lucide="moon"]');
-                    
-                    if (sunIcon && moonIcon) {
-                        if (currentTheme === 'light') {
-                            sunIcon.style.display = 'none';
-                            moonIcon.style.display = 'inline';
-                        } else {
-                            sunIcon.style.display = 'inline';
-                            moonIcon.style.display = 'none';
-                        }
-                    }
-                }
-            }, 500);
-        });
-    </script>
+    <script src="assets/scripts/persian-blog.js"></script>
 </body>
 </html>
