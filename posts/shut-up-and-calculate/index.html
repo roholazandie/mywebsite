@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Theme Detection Script - Must be first to prevent FOUC -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    
+    <title>Shut up and Calculate: The role of definitions and language in science - Rohola Zandie</title>
+    <meta name="description" content="An examination of the philosophical foundations of scientific definitions and the problematic 'shut up and calculate' approach in modern physics.">
+
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="philosophy of science, theoretical physics, language, definitions, quantum mechanics, scientific method">
+    <meta name="author" content="Rohola Zandie">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Shut up and Calculate: The role of definitions and language in science">
+    <meta property="og:description" content="An examination of the philosophical foundations of scientific definitions and the problematic 'shut up and calculate' approach in modern physics.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="../../assets/images/posts/shut-up-and-calculate/main.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- MathJax for mathematical notation -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../assets/styles/portfolio.css">
+    <link rel="stylesheet" href="../../assets/styles/blog.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <strong>Rohola Zandie</strong>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../../blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../persian-blog.html">بلاگ</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-link nav-link theme-toggle" id="themeToggle">
+                            <i data-lucide="sun" class="icon-light"></i>
+                            <i data-lucide="moon" class="icon-dark"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Back to Blog Link -->
+            <a href="../../blog.html" class="back-to-blog">
+                <i data-lucide="arrow-left"></i>
+                Back to Blog
+            </a>
+
+            <!-- Post Header -->
+            <header class="post-header">
+                <h1 class="post-title">Shut up and Calculate: The role of definitions and language in science</h1>
+                <div class="post-meta">
+                    <div class="post-meta-item">
+                        <i data-lucide="calendar"></i>
+                        <span>November 2025</span>
+                    </div>
+                    <div class="post-meta-item">
+                        <i data-lucide="user"></i>
+                        <span>Rohola Zandie</span>
+                    </div>
+                    <div class="post-meta-item">
+                        <i data-lucide="clock"></i>
+                        <span>15 min read</span>
+                    </div>
+                </div>
+                <div class="blog-tags justify-content-center">
+                    <span class="tag">Philosophy of Science</span>
+                    <span class="tag">Theoretical Physics</span>
+                    <span class="tag">Language</span>
+                    <span class="tag">Epistemology</span>
+                </div>
+            </header>
+
+            <!-- Main Post Image -->
+            <figure class="text-center mb-5 main-post-image">
+                <img src="../../assets/images/posts/shut-up-and-calculate/main.jpg" 
+                     class="img-fluid rounded" 
+                     alt="Shut up and Calculate - Main Image">
+            </figure>
+
+            <!-- Post Content -->
+            <article class="post-content">
+                <p class="lead">Recently, I watched a lecture by Nima Arkani-Hamed, a theoretical physicist at the Institute for Advanced Study. The title of the lecture was "Two cheers to Shut up and calculate," an embarrassing defense of the diseases that have plagued current science, especially in the frontiers of physics, by wasting millions of dollars from public resources, and even worse, diverting brilliant young minds to frameworks that have proven to be unfruitful for the last couple of decades.</p>
+
+                <p>First, I have to lay out his arguments in defense of pure mathematical symbol manipulation for advancing science and against philosophical approaches. After a century of philosophy of science and the failure of pure formal methods in mathematics, it is shocking to still see some of the forefronts follow a naive positivist approach to science, with the most basic arguments lacking any depth. In this lecture, he emphasizes the focus on "eternal and rigid formulas" and forgetting about "words" and "interpretations". He mentions that the formulas from Maxwell's first theory remained, while his philosophical framework changed! In one slide, he literally uses two columns to compare "words" and "formulas," as if mathematics or physics sit outside language in a domain accessible only to him and his colleagues.</p>
+
+                <p>On the one hand, scientists must recognize that science is part of all human activities and will therefore be affected by it as much as it shapes it. This doesn't necessarily imply a naive relativism, but quite the contrary, shows how new discoveries emerge in the scientific enterprise. The symbols and definitions used in physics refer to "observations" that can only be defined as "generalities" within the entirety of language and our interaction with the world, known as "situated cognition". Mathematics and Physics are part of a language that has become too precise, leading some to think they have a totally different quality. We have to remember that the difference between pure sciences and language is not that one is about reality and the other is not! The ordinary language of everyday usage has been developed as a shared way to understand ourselves and the world, too!</p>
+
+                <blockquote class="text-center fst-italic">
+                    <p class="mb-2">Henry Poincaré, in the book "Science and Method," points this out elegantly: he emphasizes that even though we have precise mathematical definitions of different concepts like "line", "circle", or "numbers", before learning them, we already have an "intuitive sense".</p>
+                </blockquote>
+
+                <p>This intuition can be misleading or not general enough; nevertheless, it is the primary way we understand such concepts. We can't understand mathematics or physics unless we first understand language itself! Poincaré points out that intuitions can change "definitions" leading to new systems of mathematics, for example, the extension of the definition of line from sitting on a flat to a curved space was based on the "intuition" that we recognize both as lines in ordinary language. But the relationships run deeper.</p>
+
+                <h2>The Philosophical Roots of Scientific Definitions</h2>
+                
+                <p>Arkani-Hamed refers to concepts like mass or momentum as "words" that changed meaning once we figure out their "formulas." But how does one come up with these definitions and formulas in the first place? He makes an even more naive claim: that this can happen through pure symbolic manipulation! This, however, is not surprising when considering the current state of string theory and the cluster of post-standard model theories, which have become playgrounds for increasingly abstract mathematics with no proper grounding.</p>
+
+                <p>The historical development of scientific concepts is very instructive: the concepts like "energy", "momentum", "entropy", or "information" have been around for longer than we had formulas to describe them accurately, but were those words useless because there was no mathematical definition or associated formula for "calculation"? This is similar to thinking that "agency", "cognition", "abstraction", or "society", and pretty much all the words in language are useless or arbitrary because we don't have a precise way to formulate them!</p>
+
+                <p>The imprecise language is still helpful and practical, and that's why the "humanities" and social sciences can still offer explainability through overall pictures, metaphors, and analogies. Poincaré mentions that any definition is based on "induction" or "generalization through an analogy," which sits outside the system. The truth of such statements can't be simply proven inside that system itself! Definitions, whether scientific or not, are based on linguistic "hinge statements" that hold the whole system together! Physics is full of these definitions: the time evolution of the world is governed by a unitary operator! This is not only because of its mathematical beauty, but also because it presents definitions based on a philosophical position on how the world should be.</p>
+
+                <p>The language is a hierarchy of realms that operate at different resolutions of uncertainty. Part of the language, like mathematics or physics, is precise and enables calculations. Still, it is also shaped by the entire language, by our interaction with the environment through our bodies, experimental tools, analogies, and conceptualizations, among other factors. It is not only that our scientific language is "about" reality, but the whole language is connected to our "situated cognition".</p>
+
+                <p>Merleau-Ponty, the French philosopher, emphasizes the role that perception plays in our experience of the world. Our perception (and more generally our knowledge of the world) is a dialogue of our bodies with the world in which it is situated. Take, for example, the generalization of real numbers to imaginary numbers that happens through "rotation": rotation is one of the most fundamental ways our bodies interact with the world and has its own logic. The definition of an imaginary number thus comes from a situated experience. Not all definitions are easy to pin down in this manner, but we can understand why it is crucial not only to master pure theoretical science but also to appreciate the broader philosophy and worldviews, which can be imprecise yet powerful in their explanations.</p>
+
+                <p>Looking back at history, it is clear that scientists have actively engaged with philosophical ideas, as reflected in their writings. Looking at <em>Philosophiæ Naturalis Principia Mathematica</em> by Newton reveals the first and most obvious difference from current scientific texts: his heavy reliance on language and philosophy alongside his mathematics. Most of today's scientists don't like philosophical pictures and fundamentals because they consider them matters of taste and unverifiable. Philosophy in all its variants is an "activity" of thinking, debating, and refinement, and even though it doesn't possess the verifiability property, the ideas can be strengthened or weakened based on competing views, observations, doubts, and abnormalities. Just as a sound theoretical framework requires a coherent, powerful structure, the same can be said of the philosophies that underpin it.</p>
+
+                <h2>Invariants and Hinge Propositions</h2>
+
+                <p>The mathematical structure of theoretical science has revealed that, at the most fundamental level, empirical science seeks invariants or symmetries of nature. These are unquestionable fixed points of the system in which other theorems make sense: we assume that the result of an experiment is independent of the position in space and time! (time and space invariant) This is the definition of space and time for us, and we organize other observations around them to make sense of them!</p>
+
+                <p>Kleene (1943) and Mostowski (1946) were independently working on the foundation of "The arithmetical hierarchy": a classification of statements that move up in generality in a ladder. In such construction, we define "for all" (universal quantifiers) and "there exists" (existential quantifiers) statements that describe general rules on a set of objects that are imposed from above. They make it easy to define "new concepts" for that system. Take a look at the definition of limit:</p>
+
+                $$\lim_{x \rightarrow a} f(x)=L \quad \text{if and only if} \quad \forall \varepsilon>0, \exists \delta>0 \text{ such that } 0<|x-a|<\delta \Rightarrow|f(x)-L|<\varepsilon$$
+
+                <p>Two quantifiers of "for all" and "there exists" made it possible to define the concept of "limit," which is the foundation of calculus. This cannot be proven because it is a definition based on quantifiers that points to a fixed point in the system (the induction).</p>
+
+                <p>Now, let's take a look at a fundamental definition in physics: Noether's theorem says (roughly) that: "If the action of a system (or its Lagrangian) is invariant under a continuous group of transformations, then there is a corresponding conserved quantity." Thus, one has a statement of the form:</p>
+
+                $$\begin{align}
+                \forall \text{ (transformation) } [& \text{if } L\text{(action) is unchanged under the transformation,} \\
+                &\text{then } \exists \text{ (conserved quantity) with a certain property} \\
+                &\text{(its divergence = 0) }]
+                \end{align}$$
+
+                <p>This definition itself relies on other "hinge" propositions, for example, "for all physical systems," which, in turn, derives its meaning from the very definition of a "physical system."</p>
+
+                <p>But how can one come up with such definitions if they are not inside the system?</p>
+
+                <p>Even though the natural language doesn't have clean hinge propositions of the above type, it is still full of generalities that hold more or less for a class of properties; some of these are useful, doubtful, and even misleading. They cannot be derived through mere symbol manipulation or a "shut up and calculate" attitude; instead, they require deep philosophical investigation and observation of the nature that can be initially messy, unfounded, and imprecise. Usually, many iterations of thought and debate are required to arrive at the right definitions and concepts. The history of quantum mechanics shows how the interplay of competing ideas with different pictures of reality led to the elegant definitions and mathematical frameworks.</p>
+
+                <blockquote class="text-center fst-italic">
+                    <p class="mb-2">Wittgenstein introduces the notion of "hinge-propositions" to highlight certain beliefs or propositions that stand at the foundation of our practices of doubt, assertion, questioning, and knowledge. He writes: "That is to say, the questions that we raise and our doubts depend on the fact that some propositions are exempt from doubt, are as it were like hinges on which those turn." (OC §341)</p>
+                </blockquote>
+
+                <p>This means that philosophy is not about inventing "fantasy worlds," but about drawing attention to the obvious. To draw our attention to the hinges upon which our situated cognition, value systems, and shared beliefs operate. Therefore, hinges are not merely arbitrary beliefs among others; they form the boundary conditions of our epistemic game.</p>
+
+                <h2>The Roots of "Shut up and Calculate"</h2>
+
+                <p>The quote "shut up and calculate" is from Steven Weinberg, a theoretical physicist who didn't like the debates about the philosophy and foundation of quantum mechanics, mostly because what drove most of its later development was pure mathematical trickery. After the initial years of developing quantum mechanics, many started to apply it to more practical use cases, such as scattering, solid-state physics, and computation. The elegant mathematical framework of QM was so fruitful that it blossomed in many different ways, giving rise to a host of beautiful mathematical theories that have ever existed.</p>
+
+                <p>The mathematics of quantum mechanics enabled many theorists to predict the existence of new particles and fields, demonstrating the extent to which one could achieve through symbolic manipulation alone. This led many, like Steven Weinberg, to suggest that the philosophical ideas are not the driving force but rather ornamental additions to the theories, which can be mutually contradictory yet consistent with the math. This unfortunate turn in the 60s by the second and third generations of quantum physicists changed the field altogether, while Niels Bohr, Werner Heisenberg, Albert Einstein, and other fathers of the theory remained very much philosophical to the end of their lives. For them, many of the questions remained unresolved.</p>
+
+                <p>The development of many foundational theories is often followed by a period of mathematization, an era in which new concepts and entities are generated through symbolic manipulation and abstract mathematical reasoning. Yet this cannot be the ultimate destiny of the empirical sciences. The unsettling reality of many modern physical theories is that they have drifted far from their original grounding in nature and measurement. A striking example of this trend can be seen in works such as Arkani-Hamed's "Amplituhedron," which exemplifies how contemporary physics, in its pursuit of mathematical elegance, has increasingly detached itself from empirical investigation and become absorbed in pure abstraction.</p>
+
+                <p>We need to look outward once again, to the natural world in all its complexity. For many scientists, it is scary to engage with concepts that may seem premature for precise investigation. Yet such ideas can still be discussed, explored, and even measured in meaningful ways. In the end, no one can provide a perfectly sharp definition of these phenomena, but we can still develop an intuitive "sense" of them that is supported, however loosely, by emerging mathematical formulations.</p>
+
+                <blockquote class="text-center fst-italic">
+                    <p class="mb-2">When Claude Shannon was not sure about the entity he was referring to, he asked Von Neumann: "My greatest concern was what to call it. I thought of calling it 'information,' but the word was overly used, so I decided to call it 'uncertainty.' When I discussed it with John von Neumann, he had a better idea. Von Neumann told me, 'You should call it entropy, for two reasons. In the first place, your uncertainty function has been used in statistical mechanics under that name, so it already has a name. In the second place, and more importantly, no one really knows what entropy is, so in a debate, you will always have the advantage.'"</p>
+                </blockquote>
+
+                <p>This is precisely what makes science beautiful: it transcends rigid definitions, becoming something malleable, approachable, and, at its best, an art form in its own right.</p>
+            </article>
+
+            <!-- Share Section -->
+            <section class="post-share">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="share-content">
+                            <h4>Share this article</h4>
+                            <div class="share-buttons">
+                                <a href="#" class="share-button" data-platform="twitter">
+                                    <i data-lucide="twitter"></i> Twitter
+                                </a>
+                                <a href="#" class="share-button" data-platform="linkedin">
+                                    <i data-lucide="linkedin"></i> LinkedIn
+                                </a>
+                                <a href="#" class="copy-link">
+                                    <i data-lucide="link"></i> Copy Link
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2025 Rohola Zandie. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="../../assets/scripts/portfolio.js"></script>
+    <script src="../../assets/scripts/blog.js"></script>
+</body>
+</html>
