@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Theme Detection Script - Must be first to prevent FOUC -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    
+    <title>Logarithm, Perception, and Information - Rohola Zandie</title>
+    <meta name="description" content="Exploring the deep connection between logarithmic perception, brain function, and information theory - from Weber-Fechner law to the mathematical structure of consciousness.">
+
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="logarithm, perception, Weber-Fechner law, psychophysics, information theory, neuroscience, brain, cognition">
+    <meta name="author" content="Rohola Zandie">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Logarithm, Perception, and Information">
+    <meta property="og:description" content="Exploring the deep connection between logarithmic perception, brain function, and information theory.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="../../assets/images/posts/logarithm-perception-information/audio.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- MathJax for mathematical notation -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../assets/styles/portfolio.css">
+    <link rel="stylesheet" href="../../assets/styles/blog.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <strong>Rohola Zandie</strong>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-link nav-link theme-toggle" id="themeToggle">
+                            <i data-lucide="sun" class="icon-light"></i>
+                            <i data-lucide="moon" class="icon-dark"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Back to Blog Link -->
+            <a href="../../blog.html" class="back-to-blog">
+                <i data-lucide="arrow-left"></i>
+                Back to Blog
+            </a>
+
+            <!-- Post Header -->
+            <header class="post-header">
+                <h1 class="post-title">Logarithm, Perception, and Information</h1>
+                <div class="post-meta">
+                    <div class="post-meta-item">
+                        <i data-lucide="calendar"></i>
+                        <span>July 2025</span>
+                    </div>
+                    <div class="post-meta-item">
+                        <i data-lucide="user"></i>
+                        <span>Rohola Zandie</span>
+                    </div>
+                    <div class="post-meta-item">
+                        <i data-lucide="clock"></i>
+                        <span>12 min read</span>
+                    </div>
+                </div>
+                <div class="blog-tags justify-content-center">
+                    <span class="tag">Neuroscience</span>
+                    <span class="tag">Information Theory</span>
+                    <span class="tag">Psychophysics</span>
+                    <span class="tag">Mathematics</span>
+                </div>
+            </header>
+
+            <!-- Post Content -->
+            <article class="post-content">
+                <blockquote class="text-center fst-italic">
+                    <p class="mb-2">"You have no idea, how much poetry there is in the calculation of a table of logarithms."</p>
+                    <footer class="blockquote-footer">Karl Friedrich Gauss</footer>
+                </blockquote>
+
+                <h2>Introduction</h2>
+                
+                <p>As far back as I can remember, my father always had hearing problems. Because of this, every once in a while, he had to undergo an "audiogram" (a hearing test). An audiogram is a chart that looks like the figure below.</p>
+
+                <figure class="text-center my-4">
+                    <img src="../../assets/images/posts/logarithm-perception-information/audio.png" 
+                         alt="A sample audiogram showing the scale of hearing as a log scale" 
+                         class="img-fluid rounded">
+                    <figcaption class="figure-caption mt-2">
+                        <strong>Figure 1:</strong> A sample audiogram shows the scale of hearing as a log scale
+                    </figcaption>
+                </figure>
+
+                <p>On the horizontal axis, you can see frequencies ranging from 20 to 10,000 (even though humans are capable of hearing sounds up to 20,000 Hz). But the vertical axis represents hearing levels in a unit called decibels. A decibel literally means "ten bels", but the bel itself is a logarithmic unit. This means that 40 decibels is actually ten times stronger than 30 decibels! But why should that be? Why use a logarithmic unit to measure someone's hearing? Searching for an answer to this question leads to a deep understanding of logarithms, the brain, perception, and information.</p>
+
+                <h2>Background</h2>
+
+                <p><strong>Gustav Theodor Fechner</strong>, a German physicist, philosopher, and psychologist, is the founder of what we now know as <strong>"psychophysics"</strong>. Fechner studied the relationship between <strong>physical stimuli</strong> and the <strong>sensations (perceptions)</strong> that arise from them. His studies opened up a whole new avenue for understanding the human psyche and its relationship with the physical world. Fechner was the student of another German physicist and psychologist named <em>Ernst Heinrich Weber</em>. Weber noticed that "the minimum increase of stimulus which will produce a perceptible increase in sensation is proportional to the pre-existent stimulus".</p>
+
+                <p>To understand this concept, look at the figure below: on each column there are 10 more dots in the below square than in the upper, however, our perception of the difference is clearly different—the increase in the number of dots on the left column is visible but not as much on the right column.</p>
+
+                <figure class="text-center my-4">
+                    <img src="../../assets/images/posts/logarithm-perception-information/Weber-Fechner_law.png" 
+                         alt="Weber-Fechner law illustration" 
+                         class="img-fluid rounded">
+                    <figcaption class="figure-caption mt-2">
+                        <strong>Figure 2:</strong> Weber-Fechner law demonstration
+                    </figcaption>
+                </figure>
+
+                <p>In 1860, Gustav Fechner published a seminal book titled <em>Elemente der Psychophysik (Elements of Psychophysics)</em>, in which he explored foundational ideas about human sensation. He proposed that sensory change is best understood as a contrast across scales, that is, the detection of change relies on relative differences rather than absolute ones. Fechner observed that in order to notice a difference in a stimulus (such as brightness or weight), the change must be a constant proportion of the original stimulus. In other words, <em>the brain is a detector of ratio-based change</em>.</p>
+
+                <p>For example, if you are given a 1 kg weight and it is increased to 2 kg, you immediately notice the difference. However, if you're given a 10 kg weight followed by an 11 kg weight, the same 1 kg increase is barely perceptible. To detect a comparable change in the second scenario, the weight would need to double from 10 kg to 20 kg. This minimum proportion of change that is just barely perceptible is known as the <strong>just-noticeable difference (JND)</strong>.</p>
+
+                <p>Fechner concludes:</p>
+                <blockquote>
+                    The perceived change in stimuli is inversely proportional to the initial stimulus
+                </blockquote>
+
+                <p>In mathematical terms, if we denote a small change in perception as $dp$ and the stimulus as $S$, then the relationship can be written as:</p>
+
+                $$dp = \alpha \frac{dS}{S}$$
+
+                <p>where $\alpha$ is the proportionality constant. This is called the <strong>Fechner law</strong>. If we start at some initial stimulus $S_0$ and then change it to $S$, the total change in perception would be:</p>
+
+                $$p(S)-p(S_0)=\alpha \int_{S_0}^S \frac{dS'}{S'}=\ln \left(\frac{S}{S_0}\right)^\alpha$$
+
+                <p>or more simply:</p>
+
+                $$p=\alpha \ln \frac{S}{S_0}$$
+
+                <p>This shows that the relationship between <strong>stimulus</strong> and <strong>perception</strong> is <strong>logarithmic</strong>. That is, when the stimulus is multiplied, the perception only increases additively. This principle is not limited to weight or auditory perception; it applies broadly across all sensory modalities.</p>
+
+                <p>For example, our visual system can detect luminance over a range of more than $10^9$ times, yet our perception of brightness increases linearly across this range. Similarly, our sense of taste operates on a logarithmic scale. The tongue is highly sensitive to small differences in weak stimuli but becomes less discriminating as intensity increases. Take sucralose, an artificial sweetener found in many diet sodas: although it is up to 600 times sweeter than sugar in terms of concentration, the perceived increase in sweetness is relatively modest, because perception scales with the logarithm of stimulus intensity.</p>
+
+                <p>Logarithmic scaling also extends beyond the traditional five senses. It applies to our perception of distance, time, and even decision-making. According to <strong>Hick's Law</strong>, the time it takes to choose among $N$ alternatives increases only logarithmically: $\text{reaction time} \propto \log(N)$. This raises a fundamental question: <strong>Why does our perception follow a logarithmic relationship with the stimuli we receive from the world?</strong></p>
+
+                <h2>The Log-Dynamic Brain</h2>
+
+                <p>A wealth of psychological and neuroscientific research reveals a profound truth: our minds and bodies interpret the world not through absolute values, but through <strong>ratios</strong>. This <strong>ratio-based perception</strong> is so deeply embedded in our cognition that it shapes how we see, hear, taste, and even think. The Latin root <strong>logos</strong>, meaning reason, word, or ratio, is at the heart of this idea. It forms the basis of words like <strong>rationality</strong> (our capacity to make sense of the world through proportion and relation) and <strong>logarithm</strong> (literally, "the ratio-number").</p>
+
+                <p>This fundamental orientation toward ratios forms the backbone of <strong>contextuality</strong>, the hallmark of human cognition. We rarely judge things in isolation; instead, we compare them to surrounding elements. One well-documented study, for example, found that patrons in a bar were significantly more likely to order <em>German beer</em> if <em>German music</em> was playing in the background. Their decision was not based solely on their personal preference, but on a subtle contextual cue, a ratio between environment and choice.</p>
+
+                <p>This same principle explains why a \$10 sandwich may feel expensive at a food truck but cheap at an upscale airport lounge. Or why the same glass of wine tastes better if you're told it's a \$100 bottle rather than a $10 one. In all these cases, <em>the value isn't perceived in isolation; it's inferred from its relative position in a broader sensory or social context</em>.</p>
+
+                <p>At a neural level, this tendency is embodied in <strong>associative memory</strong>. The brain doesn't store facts like a computer; it stores <strong>relationships—patterns of co-occurrence</strong>. These internalized "ratios" between stimuli, actions, and outcomes enable us to navigate the world efficiently, filling in gaps and adapting flexibly to new situations. We don't just see the world as it is; we see it in proportion to everything else.</p>
+
+                <p>Recent studies of the brain offer valuable insights into why both the brain and the body often operate according to logarithmic principles. One of the earliest observations in neuroscience is that neural activity does not follow a normal (Gaussian) distribution. Instead, it follows a <strong>log-normal distribution</strong>: <em>the majority of neurons fire at relatively low frequencies, while a small minority fire at much higher rates</em>.</p>
+
+                <p>This small group of high-frequency "fast burster" neurons holds a special status. They not only remain consistently more active but also form more connections with other neurons. Acting as central <strong>hubs</strong>, these neurons help organize brain activity into a <strong>hierarchical network structure</strong>, supporting efficient communication and integration across different regions of the brain.</p>
+
+                <p>György Buzsáki and colleagues showed that synaptic weights, axonal bouton sizes, and cortical firing rates all follow heavy-tailed log-normal distributions, implying multiplicative growth processes operating across scales. This "log-dynamic" architecture means a small subset of very strong hubs dominates network throughput, while many weak links provide flexibility.</p>
+
+                <p>Such statistics naturally produce gain curves consistent with Weber–Fechner: a proportional increment in presynaptic drive yields an additive change in postsynaptic potential once signals are expressed in log units. Computational models confirm that skewed, log-normal weights maximize information flow under metabolic constraints.</p>
+
+                <p>The stimuli around us follow the power law in many cases, and our cognitive systems are adapted to a <strong>dynamic-range compression</strong> for optimal transfer of information.</p>
+
+                <h2>Information Space: A Logarithmic Space</h2>
+
+                <p>If we assume that the information is encoded in a probability space $(X, \Sigma, \mu)$, in order to organize this space in the most efficient way, we create a <strong>filtration</strong> as an increasing family of $\sigma$-algebras:</p>
+
+                $$\Sigma_0 \subset \Sigma_1 \subset \cdots \subset \Sigma_{\infty}=\Sigma$$
+
+                <p>Each $\Sigma_k$ induces a finite (or countable) partition $\mathcal{P}_k=\{C_1^{(k)}, \ldots, C_{N_k}^{(k)}\}$ where each partition is mutually disjoint:</p>
+
+                $$X=\bigsqcup_{i=1}^{N_k} C_i^{(k)}$$
+
+                <p>because $\Sigma_k \subset \Sigma_{k+1}$, every item at level $k+1$ sits inside a unique item at level $k$. You can see such a structure in the figure below:</p>
+
+                <figure class="text-center my-4">
+                    <img src="../../assets/images/posts/logarithm-perception-information/hierearchical.jpg" 
+                         alt="The filtration specifies a tree with ever-increasing levels of resolution" 
+                         class="img-fluid rounded">
+                    <figcaption class="figure-caption mt-2">
+                        <strong>Figure 3:</strong> The filtration specifies a tree with ever-increasing levels of resolution
+                    </figcaption>
+                </figure>
+
+                <p>For example a <em>knife</em> is inside the partition <em>kitchen appliances</em> and that itself in the partition <em>house appliances</em> etc. Formally, for every $C_j^{(k+1)}$ there is a unique parent $C_i^{(k)}$ such that $C_j^{(k+1)} \subseteq C_i^{(k)}$.</p>
+
+                <p>The <strong>filtration</strong> in this context is a <strong>tree</strong>. If there is fixed branching of $b$ at each level ($b$-ary tree), number of leaves at level $k$ is $N_k=b^k$. In other words, identifying an object (leaf) requires exactly $k=\lceil\log_b N_k\rceil$ $b$-way questions (in 2-way it is a yes/no question).</p>
+
+                <p>As it turns out this is the most efficient way of organizing information and that's also why the brain chooses such a hierarchical information storage that is based on the ratios of each level with the next.</p>
+
+                <h3>What is "encoded"? Ratios between successive partitions</h3>
+
+                <p>For any child $C_j^{(k+1)} \subset C_i^{(k)}$ define the <strong>ratio</strong>:</p>
+
+                $$\rho_{k+1, j}=\frac{\mu(C_j^{(k+1)})}{\mu(C_i^{(k)})} \in(0,1], \quad \sum_{j: C_j^{(k+1)} \subset C_i^{(k)}} \rho_{k+1, j}=1$$
+
+                <p>An item $x \in X$ is located by a sequence of indices (the bit string) $(\rho_1, \rho_2, \cdots)$. The full probability of the deepest cell can be represented as:</p>
+
+                $$\mu(C^{(k)}(x))=\prod_{m=1}^k \rho_m$$
+
+                <p>Thus the "payload" is multiplicative and logarithms convert it to an additive code:</p>
+
+                $$\log \mu(C^{(k)}(x))=\sum_{m=1}^k \log \rho_m$$
+
+                <p>This is why logarithms, and log-normal statistics, pervade natural sensory coding: ratios become sums.</p>
+
+                <p>If the ratio at each level is the same we have a fixed ratio that represents the fractal dimension (information dimension). But in general, the ratios of each level (the branching factor) can be different. At level $k$ let the parent interval divide into $b$ sub-intervals:</p>
+
+                $$\{\ell_{k+1, j}=r_{k+1, j} \ell_k, \quad p_{k+1, j} \mu(\text{parent})\}_{j=1}^b$$
+
+                <p>with geometry $\sum_j r_{k+1, j}=1$ and probability mass $\sum_j p_{k+1, j}=1$.</p>
+
+                <p>Now every path $(j_1, j_2, \cdots)$ acquires its own pair of products:</p>
+
+                $$\ell_k(x)=\prod_{m=1}^k r_{m, j_m}, \quad \mu_k(x)=\prod_{m=1}^k p_{m, j_m}$$
+
+                <p>Taking logs and dividing gives a <strong>local Hölder exponent</strong>:</p>
+
+                $$\alpha(x)=\lim_{k \rightarrow \infty} \frac{\log \mu_k(x)}{\log \ell_k(x)}$$
+
+                <p>and different paths generically yield different $\alpha$. The fractal "blossoms" into a spectrum. $f(\alpha)$ is the Hausdorff dimension of the set of points that share that exponent.</p>
+
+                <figure class="text-center my-4">
+                    <img src="../../assets/images/posts/logarithm-perception-information/tree_info.jpg" 
+                         alt="The most generalized hierarchical structure in the form of a tree" 
+                         class="img-fluid rounded">
+                    <figcaption class="figure-caption mt-2">
+                        <strong>Figure 4:</strong> The most generalized hierarchical structure in the form of a tree that can be encoded using a multi-fractal
+                    </figcaption>
+                </figure>
+
+                <h2>Conclusion</h2>
+
+                <p>We began with a simple but striking observation: that perception is not linear, but logarithmic, a quiet fact with sweeping implications. From there, we uncovered why this logarithmic structure is not just a coincidence of sensory systems but a fundamental organizing principle of the brain itself. It governs not only how we perceive, but also how we <em>think, remember, and understand</em>.</p>
+
+                <p>At the heart of this lies the brain's remarkable ability to interpret the world in terms of ratios, a faculty deeply tied to what we call code length. In information theory, code length is the logarithm of the number of possibilities, an efficient, compressed representation of complexity. The brain, and indeed the entire body, appears to embrace this principle. Cognition becomes compression: a continuous distillation of the flood of sensory inputs into meaningful relations.</p>
+
+                <p>Whether comparing tones, weights, brightness, or abstract ideas, our <strong>body seeks structure through proportion</strong>. It encodes the world by folding vast ranges of experience into compact, relational formats. This is not merely a strategy; it is the architecture of thought itself.</p>
+
+                <p>And so, behind every sensation, every decision, and every insight lies a deeper logic, a logarithmic mind that sees the world not as it is, but as it relates. In ratios, we find order. In compression, we find clarity. In the simple act of perceiving, we uncover the mathematics of meaning.</p>
+
+                <p>To understand is, ultimately, to measure the world by its ratios.</p>
+
+                <h2>References</h2>
+                <div class="references">
+                    <p>[1] Kusakabe, Y., Shindo, Y., Kawai, T., Maeda-Yamamoto, M., & Wada, Y. (2021). Relationships between the response of the sweet taste receptor, salivation toward sweeteners, and sweetness intensity. <em>Food Science & Nutrition</em>, 9(2), 719-727.</p>
+                    
+                    <p>[2] Young, E. J., & Ahmadian, Y. (2023). Efficient coding explains neural response homeostasis and stimulus-specific adaptation. <em>bioRxiv</em>, 2023-10.</p>
+                    
+                    <p>[3] Buzsáki, G., & Mizuseki, K. (2014). The log-dynamic brain: how skewed distributions affect network operations. <em>Nature Reviews Neuroscience</em>, 15(4), 264-278.</p>
+                    
+                    <p>[4] Petersen, P. C., & Berg, R. W. (2016). Lognormal firing rate distribution reveals prominent fluctuation–driven regime in spinal motor networks. <em>eLife</em>, 5, e18805.</p>
+                </div>
+            </article>
+
+            <!-- Share Section -->
+            <section class="post-share">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="share-content">
+                            <h4>Share this article</h4>
+                            <div class="share-buttons">
+                                <a href="#" class="share-button" data-platform="twitter">
+                                    <i data-lucide="twitter"></i> Twitter
+                                </a>
+                                <a href="#" class="share-button" data-platform="linkedin">
+                                    <i data-lucide="linkedin"></i> LinkedIn
+                                </a>
+                                <a href="#" class="copy-link">
+                                    <i data-lucide="link"></i> Copy Link
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2025 Rohola Zandie. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="../../assets/scripts/portfolio.js"></script>
+    <script src="../../assets/scripts/blog.js"></script>
+</body>
+</html>

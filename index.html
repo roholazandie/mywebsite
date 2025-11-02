@@ -3,6 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Theme Detection Script - Must be first to prevent FOUC -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    
     <title>Rohola Zandie - AI Researcher & CTO</title>
     <meta name="description" content="Rohola Zandie - CTO and Co-founder at Absentia Labs, AI researcher specializing in machine learning, computational biology, and biotech innovation.">
     

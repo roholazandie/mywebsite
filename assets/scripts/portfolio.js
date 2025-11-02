@@ -34,9 +34,8 @@ function initializeThemeToggle() {
     const moonIcon = themeToggle.querySelector('.icon-dark, .moon-icon');
     const html = document.documentElement;
 
-    // Check for saved theme preference or default to 'dark'
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    html.setAttribute('data-theme', currentTheme);
+    // Get current theme (already set by inline script)
+    const currentTheme = html.getAttribute('data-theme') || localStorage.getItem('theme') || 'dark';
 
     // Update icon based on current theme
     function updateThemeIcon(theme) {
@@ -51,7 +50,7 @@ function initializeThemeToggle() {
         }
     }
 
-    // Initialize icon
+    // Initialize icon based on current theme
     updateThemeIcon(currentTheme);
 
     // Theme toggle event listener
