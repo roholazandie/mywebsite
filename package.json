@@ -1,0 +1,43 @@
+{
+  "name": "rohola-zandie-website",
+  "version": "1.0.0",
+  "description": "Personal website and blog for Rohola Zandie - AI Researcher & CTO",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 8080",
+    "preview": "python3 -m http.server 3000",
+    "lint": "echo 'Linting HTML, CSS, and JS files...'",
+    "validate": "echo 'Validating HTML structure...'"
+  },
+  "keywords": [
+    "portfolio",
+    "blog",
+    "ai",
+    "research",
+    "machine-learning",
+    "computational-biology",
+    "persian",
+    "bilingual"
+  ],
+  "author": {
+    "name": "Rohola Zandie",
+    "email": "roholazandie@gmail.com",
+    "url": "https://roholazandie.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roholazandie/mywebsite.git"
+  },
+  "homepage": "https://roholazandie.com",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {},
+  "dependencies": {},
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
