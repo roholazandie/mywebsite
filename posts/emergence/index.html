@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Theme Detection Script - Must be first to prevent FOUC -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    
+    <title>Emergence: Moving away from Real Numbers - Rohola Zandie</title>
+    <meta name="description" content="Exploring emergence through symbolic dynamics, the Bernoulli Map, and Poincaré's threshold — how deterministic laws produce apparent randomness and what this reveals about the arrow of time.">
+
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="emergence, symbolic dynamics, Bernoulli map, quantum mechanics, shift space, Poincaré, arrow of time, randomness, ergodicity, physics">
+    <meta name="author" content="Rohola Zandie">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Emergence: Moving away from Real Numbers">
+    <meta property="og:description" content="Exploring emergence through symbolic dynamics, the Bernoulli Map, and Poincaré's threshold — how deterministic laws produce apparent randomness and what this reveals about the arrow of time.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="../../assets/images/posts/emergence/bernoulimap.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- MathJax for mathematical notation -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../assets/styles/portfolio.css">
+    <link rel="stylesheet" href="../../assets/styles/blog.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <strong>Rohola Zandie</strong>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../../blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../persian-blog.html">بلاگ</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-link nav-link theme-toggle" id="themeToggle">
+                            <i data-lucide="sun" class="icon-light"></i>
+                            <i data-lucide="moon" class="icon-dark"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Back to Blog Link -->
+            <a href="../../blog.html" class="back-to-blog">
+                <i data-lucide="arrow-left"></i>
+                Back to Blog
+            </a>
+
+            <!-- Post Header -->
+            <header class="post-header">
+                <h1 class="post-title">Emergence: Moving away from Real Numbers</h1>
+                <div class="post-meta">
+                    <div class="post-meta-item">
+                        <i data-lucide="calendar"></i>
+                        <span>February 2026</span>
+                    </div>
+                    <div class="post-meta-item">
+                        <i data-lucide="user"></i>
+                        <span>Rohola Zandie</span>
+                    </div>
+                    <div class="post-meta-item">
+                        <i data-lucide="clock"></i>
+                        <span>15 min read</span>
+                    </div>
+                </div>
+                <div class="blog-tags justify-content-center">
+                    <span class="tag">Physics</span>
+                    <span class="tag">Emergence</span>
+                    <span class="tag">Quantum Mechanics</span>
+                    <span class="tag">Symbolic Dynamics</span>
+                    <span class="tag">Philosophy</span>
+                </div>
+            </header>
+
+            <!-- Main Post Image -->
+            <figure class="text-center mb-5 main-post-image">
+                <img src="../../assets/images/posts/emergence/bernoulimap.png"
+                     class="img-fluid rounded"
+                     alt="The Bernoulli Map - Emergence">
+            </figure>
+
+            <!-- Post Content -->
+            <article class="post-content">
+
+                <h2>Introduction</h2>
+
+                <p><strong>Emergence</strong> might be one of the least understood yet most prevalent terms in today's science. For many, it is just another buzzword with no formal definition or explanatory power. People use <strong>Emergence</strong> to express how persistent complexity (from the formation of molecules, proteins, life, and even galaxies) can arise spontaneously from a seemingly random universe.</p>
+
+                <p>To find the connection between the <strong>randomness</strong> and <strong>emergence</strong>, we should first interrogate the concept of randomness. What is a random sequence? When talking about randomness, we have to make a distinction between two senses of randomness: the physical and mathematical. The mathematical sense of randomness is usually defined in terms of Kolmogorov complexity. In other words, a sequence is random if the size of the program that generates it is greater than or equal to the size of the sequence itself. This means that the sequence is not "compressible" with a code.</p>
+
+                <p>The physical sense of randomness is different, though. Quantum mechanics introduces the concept of randomness to physics. A quantum system, such as an electron in a superposition of states $|0\rangle$ and $|1\rangle$, does not possess a definite value prior to interaction. Its state is described as a vector in a complex Hilbert space, specifically residing on the surface of a Bloch sphere for a two-level system (qbit).</p>
+
+                <p>In physics, we often use a Hamiltonian to describe the time evolution of a system. In QM, the Hamiltonian is described by the Schrödinger equation. Note that the Hamiltonian is inherently a time-reversible unitary operator. It only rotates the superposition of states, but doesn't explain how we get the final single value. This is known as the <strong>measurement problem</strong>, which manifests as wave-function collapse. While unitary evolution follows a definitive trajectory in Hilbert space, measurement acts as a <strong>projection operator</strong>, collapsing the state vector into a specific eigenstate of the observable. This transition represents a "leakage" of information because it transforms a coherent, high-dimensional superposition into a single, classical data point, a process whose exact physical mechanism remains one of the greatest unresolved mysteries in physics. This "leakage" of information is the perfect example of <strong>emergence</strong>. We, as observers, only measure how the results of an experiment <em>emerge</em>, without a clear way to predict them.</p>
+
+                <p>Some physicists, such as Gerard 't Hooft, believe that there could be a deterministic explanation underlying quantum mechanics. This means that the randomness we observe from the bit values could be only a byproduct of measurement resolution limitation. In other words, the randomness we see isn't "true" randomness; it's just that our tools are too "blunt" to see the underlying clockwork that occurs in much faster processes. This imposes a "superdeterminism" that can bypass Bell's theorem problem with hidden variables. We don't go that far here, but we can still entertain the idea.</p>
+
+                <h2>Universe as a Shift Space</h2>
+
+                <p>What do we mean when we say a "seemingly" random process can be totally deterministic?</p>
+
+                <p>The <strong>emergence</strong> of random bits from measurement can be studied in the language of <strong>symbolic dynamics</strong>. To understand how a deterministic law can produce apparent randomness, we must look at the isomorphism between continuous maps and shift spaces. Consider the <strong>Bernoulli Map</strong> (or Dyadic Map) acting on the unit interval $I = [0, 1)$:</p>
+
+                $$T(x) = 2x \pmod 1$$
+
+                <p>For example if $x_0 = 0.11010011\cdots$ then $T(x_0) = 0.10100111\cdots$. As you can see, the binary sequence shifted left, and the leading digit was removed.</p>
+
+                <p>While this is a simple linear expansion in continuous space, its true nature is revealed by transforming the state space into a symbolic space. Every real number $x \in [0, 1)$ can be encoded as an infinite binary sequence $\omega = (\omega_0, \omega_1, \omega_2, \dots)$ where $\omega_i \in \{0, 1\}$. This encoding discretizes the continuous interval into a binary partition:</p>
+
+                <ul>
+                    <li>$\omega_i = 0$ if the state falls in $[0, 0.5)$</li>
+                    <li>$\omega_i = 1$ if the state falls in $[0.5, 1)$</li>
+                </ul>
+
+                <p>The action of the Bernoulli Map $T(x)$ on the number $x$ is topologically conjugate to the <strong>Left Shift Operator</strong> ($\sigma$) acting on the sequence $\omega$:</p>
+
+                $$\sigma(\omega_0, \omega_1, \omega_2, \dots) = (\omega_1, \omega_2, \omega_3, \dots)$$
+
+                <p>In this framework, the time-evolution of the system is simply the deletion of the leading symbol. Here, the "measurement" simply corresponds to reading that leading symbol ($\omega_0$). However, because of the limitation of physical resolution, we can only access a finite window of bits (called "cylinder set" in symbolic dynamics terminology).</p>
+
+                <p>The left shift $\sigma$ acts as a pump that transports information from the microscopic scale to the macroscopic scale. As the system evolves ($\sigma^n(\omega)$), these hidden microscopic bits <strong>emerge</strong> to the observable window. Even though the shift is totally deterministic, the impossibility of knowing the whole "initial condition" to infinite precision creates randomness.</p>
+
+                <figure class="text-center my-5">
+                    <img src="../../assets/images/posts/emergence/bernoulimap.png"
+                         class="img-fluid rounded"
+                         alt="The repeated application of the Bernoulli Map on an arbitrary probability distribution">
+                    <figcaption class="mt-3 text-muted fst-italic">The repeated application of the Bernoulli Map on an arbitrary probability distribution will flatten it out. This is known as <strong>strongly mixing</strong> (source: <em>The End of Certainty</em> by Ilya Prigogine)</figcaption>
+                </figure>
+
+                <h3>Rationality vs. Ergodicity</h3>
+
+                <p>But let's get more precise: what is the nature of the bitstream $x_0$? We can categorize it into two cases:</p>
+
+                <ul>
+                    <li><strong>Periodic Orbits (Rational Numbers):</strong> If $x_0 \in \mathbb{Q}$, the symbolic sequence is periodic (e.g., $\overline{100}$). The system is deterministic and predictable, even with finite resolution.</li>
+                    <li><strong>Aperiodic Orbits (Irrational Numbers):</strong> If $x_0 \notin \mathbb{Q}$ (which is true for almost all numbers in the measure-theoretic sense), the sequence is non-repeating.</li>
+                </ul>
+
+                <p>If the emergent sequence is an irrational number, it means that the trajectory visits partitions $\{0\}$ and $\{1\}$ with the same frequency. This can be strengthened by considering not only $\{1\}$ and $\{0\}$, but also terms of length 2 and, in general, length $n$. We call this <strong>ergodicity</strong> or more precisely <strong>strongly mixing</strong>.</p>
+
+                <p>It seems that even though our universe has emergent bits of irrationals (randomness or noise), it also has many patterns (rationals). Otherwise, we could not see all the orders around us.</p>
+
+                <h2>The Illusion of the Continuum and the Arrow of Time</h2>
+
+                <p>Looking at the measurement problem and collapse of the wave function through the lens of symbolic dynamics shows that the emergence of new information is what defines the arrow of time. It is nothing but the progressive revelation of the "microscopic" digits shifting into our observable range. We are perceiving this influx of data as an increase in entropy. This whole experience comes from moving away from the smooth, unitary progression of time and stepping into the discrete world. We are witnessing one of the biggest changes in physics in the last couple of decades: more and more physicists are convinced that discrete structures are the best way to describe reality at the most fundamental levels. Information is replacing the previous ontological concepts of "energy", "momentum", "charge" etc.</p>
+
+                <p>The appeal of finding deterministic laws on a smooth manifold stems from the historical success of calculus. We have become accustomed to the "unreasonable effectiveness" of mathematics, specifically the Real Number system ($\mathbb{R}$). We assume that a physical theory must exist on a smooth manifold of phase space, where variables can take on any value with infinite precision. This assumption conflates the <strong>Mathematical Continuum</strong> (an abstract construct of infinite divisibility) with the <strong>Physical Continuum</strong> (what we actually observe). But as Henri Poincaré argued, the physical world does not behave like the real number line.</p>
+
+                <h3>Poincaré's Threshold: The Intransitivity of Sensation and Measurement</h3>
+
+                <p>Poincaré proposed that the physical continuum is defined not by points, but by our limits of perception, what he termed <em>Le Seuil</em> (The Threshold). This aligns with Gustav Fechner's concept of the <strong>Just-Noticeable Difference (JND)</strong>.</p>
+
+                <p>In the mathematical world of real numbers, equality is transitive: if $A=B$ and $B=C$, then $A$ must equal $C$. However, in the physical world of finite resolution, "equality" really means "indistinguishable within measurement error". (Note that this obviously goes beyond our immediate senses to our measurement devices. The limit of measurement is limited by the wavelength (or the energy) of the photons that we can create.)</p>
+
+                <p>This "indistinguishability" leads to a logical contradiction known as the <strong>Intransitivity of Indistinguishability</strong>: If we have three objects with weights $A = 10\text{g}$, $B = 11\text{g}$, and $C = 12\text{g}$, and our sensation threshold is $1.5\text{g}$: We cannot distinguish $A$ from $B$ ($|10-11| &lt; 1.5$), so physically $A = B$. We cannot distinguish $B$ from $C$ ($|11-12| &lt; 1.5$), so physically $B = C$. However, we can distinguish $A$ from $C$ ($|10-12| &gt; 1.5$), so $A &lt; C$. We are left with the paradox:</p>
+
+                $$A = B, \quad B = C, \quad \text{but} \quad A \neq C$$
+
+                <p>This contradiction is what Poincaré used to identify the "physical continuum". We can no longer use mathematical smooth, continuous transformations to describe physical reality.</p>
+
+                <p>The <strong>logic of distinguishability</strong> is bounded by the wavelength of our probe. To resolve finer details (distinguish $A$ from $B$), we must increase the energy (shorten the wavelength), but we ultimately hit a limit, whether it's the Planck length or the observer's resolution.</p>
+
+                <h2>Afterword</h2>
+
+                <p>The debate over whether reality is fundamentally <strong>deterministic</strong> or <strong>emergent</strong> has been a core question in modern physics. If a "final theory" exists, the randomness we observe may simply be a local byproduct of a much larger, repeating deterministic structure.</p>
+
+                <p>As we saw, the answer to this question can be completely independent of the underlying emergent behavior of reality. The bitstreams that pop up from the quantum level are responsible for all the randomness as well as the structure of our universe. If there is a final theory that can describe the whole of reality, then the randomness we observe is just a local phenomenon and will eventually repeat itself. As crazy as it sounds, this possibility can't be refuted altogether (look at Roger Penrose's Conformal Cyclic Cosmology (CCC)).</p>
+
+                <p>Conversely, we can succumb to the idea of pure emergence: that reality is an open-ended computation generating novel, incompressible information just like the irrationals. In this view, time is the progressive revelation of a sequence with no "master program" small enough to contain it.</p>
+
+            </article>
+
+            <!-- Share Section -->
+            <section class="post-share">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="share-content">
+                            <h4>Share this article</h4>
+                            <div class="share-buttons">
+                                <a href="#" class="share-button" data-platform="twitter">
+                                    <i data-lucide="twitter"></i> Twitter
+                                </a>
+                                <a href="#" class="share-button" data-platform="linkedin">
+                                    <i data-lucide="linkedin"></i> LinkedIn
+                                </a>
+                                <a href="#" class="copy-link">
+                                    <i data-lucide="link"></i> Copy Link
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2026 Rohola Zandie. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="../../assets/scripts/portfolio.js"></script>
+    <script src="../../assets/scripts/blog.js"></script>
+</body>
+</html>
