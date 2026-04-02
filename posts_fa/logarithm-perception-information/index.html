@@ -15,6 +15,7 @@
         })();
     </script>
     
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/styles/portfolio.css">
     <link rel="stylesheet" href="../../assets/styles/blog.css">
@@ -106,8 +107,13 @@
                      alt="لگاریتم، ادراک و اطلاعات - تصویر اصلی">
             </figure>
 
-            <!-- Post Content -->
-            <article class="post-content">
+            <!-- Post Layout with TOC -->
+            <div class="post-layout">
+                <aside class="toc">
+                    <div class="toc-title">Contents</div>
+                </aside>
+
+                <article class="post-content">
                 <blockquote class="text-center fst-italic">
                     <p class="mb-2">شما نمی‌دانید چقدر شعر در محاسبهٔ یک جدول لگاریتم وجود دارد.</p>
                     <footer class="blockquote-footer">کارل فریدریش گاوس</footer>
@@ -269,12 +275,21 @@
                 <p>در پس هر احساس، هر تصمیم، و هر درک، منطقی عمیق وجود دارد: ذهنی لگاریتمی که جهان را نه آن‌گونه که هست، بلکه آن‌گونه که نسبت دارد می‌بیند و در نهایت، درک کردن یعنی سنجیدن جهان بر اساس نسبت‌های آن.</p>
 
             </article>
+            </div>
         </div>
     </main>
 
-    <footer class="footer text-center py-4">
+    <footer class="site-footer">
         <div class="container">
-            <p>&copy; <span id="currentYear"></span> Rohola Zandie. All rights reserved.</p>
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                <p class="mb-0">&copy; 2025 Rohola Zandie</p>
+                <div class="footer-links">
+                    <a href="mailto:rohola@absentia.bio">Email</a>
+                    <a href="https://linkedin.com/in/rohola-zandie" target="_blank">LinkedIn</a>
+                    <a href="https://scholar.google.com/citations?user=xv0jIe0AAAAJ&hl=en" target="_blank">Scholar</a>
+                    <a href="https://github.com/roholazandie" target="_blank">GitHub</a>
+                </div>
+            </div>
         </div>
     </footer>
 

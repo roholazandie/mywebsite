@@ -122,8 +122,13 @@
                 </div>
             </header>
 
-            <!-- Post Content -->
-            <article class="post-content">
+            <!-- Post Layout with TOC -->
+            <div class="post-layout">
+                <aside class="toc">
+                    <div class="toc-title">Contents</div>
+                </aside>
+
+                <article class="post-content">
                 <h2>Introduction</h2>
                 
                 <p>In "generalization" the size of the parameter space should be smaller than the data space. This is exactly what compression means, and it's at the cornerstone of modern machine learning. But this premise inherently presupposes the <strong>manifold hypothesis</strong>—meaning the high dimensional data lies on a lower dimension and hence can be described by much smaller parameters. If the model is not expressive enough, reducing its uncertainty with respect to the data can be done in two different ways.</p>
@@ -158,7 +163,7 @@
 
                 <p>The interactive visualization below demonstrates the fundamental difference between forward and reverse KL divergence optimization. You can adjust the mode separation and animation speed to see how the approximating distributions behave differently.</p>
 
-                <div class="kl-visualization" style="margin: 40px 0; padding: 40px; background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)); border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(20px); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);">
+                <div class="kl-visualization" style="margin: 40px 0; padding: 40px; background: var(--bg-elevated); border-radius: 12px; border: 1px solid var(--border-color);">
                     <style>
                         .kl-visualization * {
                             box-sizing: border-box;
@@ -169,19 +174,10 @@
                             color: var(--text-primary, #ffffff);
                         }
 
-                        [data-theme="light"] .kl-visualization {
-                            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8)) !important;
-                            border: 1px solid rgba(0, 0, 0, 0.1) !important;
-                            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08) !important;
-                        }
-
                         .kl-visualization h2.viz-title {
-                            font-size: 2em;
+                            font-size: 1.5em;
                             margin-bottom: 10px;
-                            background: linear-gradient(135deg, #a855f7, #3b82f6);
-                            -webkit-background-clip: text;
-                            -webkit-text-fill-color: transparent;
-                            background-clip: text;
+                            color: var(--text-primary);
                             text-align: center;
                         }
 
@@ -194,18 +190,10 @@
 
                         .kl-visualization .viz-container {
                             width: 100%;
-                            background: rgba(255, 255, 255, 0.03);
-                            backdrop-filter: blur(10px);
-                            border-radius: 16px;
+                            background: var(--bg-secondary);
+                            border-radius: 8px;
                             padding: 25px;
-                            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-                            border: 1px solid rgba(255, 255, 255, 0.08);
-                        }
-
-                        [data-theme="light"] .kl-visualization .viz-container {
-                            background: rgba(0, 0, 0, 0.02);
-                            border: 1px solid rgba(0, 0, 0, 0.08);
-                            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+                            border: 1px solid var(--border-color);
                         }
 
                         .kl-visualization .viz-controls {
@@ -248,52 +236,42 @@
                         .kl-visualization input[type="range"]::-webkit-slider-thumb {
                             -webkit-appearance: none;
                             appearance: none;
-                            width: 18px;
-                            height: 18px;
-                            background: linear-gradient(135deg, #a855f7, #3b82f6);
+                            width: 16px;
+                            height: 16px;
+                            background: var(--accent, #4a9eff);
                             border-radius: 50%;
                             cursor: pointer;
-                            box-shadow: 0 2px 10px rgba(168, 85, 247, 0.5);
                         }
 
                         .kl-visualization input[type="range"]::-moz-range-thumb {
-                            width: 18px;
-                            height: 18px;
-                            background: linear-gradient(135deg, #a855f7, #3b82f6);
+                            width: 16px;
+                            height: 16px;
+                            background: var(--accent, #4a9eff);
                             border-radius: 50%;
                             cursor: pointer;
                             border: none;
-                            box-shadow: 0 2px 10px rgba(168, 85, 247, 0.5);
                         }
 
                         .kl-visualization .value-display {
                             font-size: 0.85em;
-                            color: #3b82f6;
+                            color: var(--accent, #4a9eff);
                             font-weight: bold;
                         }
 
                         .kl-visualization button {
-                            padding: 12px 30px;
-                            background: linear-gradient(135deg, #a855f7, #3b82f6);
+                            padding: 10px 24px;
+                            background: var(--accent, #4a9eff);
                             color: white;
                             border: none;
-                            border-radius: 25px;
-                            font-size: 0.95em;
-                            font-weight: bold;
+                            border-radius: 6px;
+                            font-size: 0.85em;
+                            font-weight: 600;
                             cursor: pointer;
-                            transition: all 0.3s ease;
-                            text-transform: uppercase;
-                            letter-spacing: 1px;
-                            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
+                            transition: background 0.2s ease;
                         }
 
                         .kl-visualization button:hover {
-                            transform: translateY(-2px);
-                            box-shadow: 0 6px 30px rgba(168, 85, 247, 0.5);
-                        }
-
-                        .kl-visualization button:active {
-                            transform: translateY(0);
+                            background: var(--accent-hover, #6db3ff);
                         }
 
                         .kl-visualization .canvas-container {
@@ -343,14 +321,9 @@
                             gap: 15px;
                             margin-top: 20px;
                             padding: 20px;
-                            background: rgba(0, 0, 0, 0.15);
-                            border-radius: 12px;
-                            border: 1px solid rgba(255, 255, 255, 0.05);
-                        }
-
-                        [data-theme="light"] .kl-visualization .info-panel {
-                            background: rgba(0, 0, 0, 0.03);
-                            border: 1px solid rgba(0, 0, 0, 0.08);
+                            background: var(--bg-primary);
+                            border-radius: 8px;
+                            border: 1px solid var(--border-color);
                         }
 
                         .kl-visualization .info-item {
@@ -366,51 +339,38 @@
                         .kl-visualization .info-value {
                             font-size: 1.1em;
                             font-weight: bold;
-                            color: #3b82f6;
+                            color: var(--accent, #4a9eff);
                         }
 
                         .kl-visualization .mode-toggle {
                             display: flex;
-                            gap: 10px;
-                            background: rgba(0, 0, 0, 0.2);
-                            padding: 5px;
-                            border-radius: 25px;
-                            border: 1px solid rgba(255, 255, 255, 0.08);
-                        }
-
-                        [data-theme="light"] .kl-visualization .mode-toggle {
-                            background: rgba(0, 0, 0, 0.05);
-                            border: 1px solid rgba(0, 0, 0, 0.1);
+                            gap: 4px;
+                            background: var(--bg-primary);
+                            padding: 4px;
+                            border-radius: 6px;
+                            border: 1px solid var(--border-color);
                         }
 
                         .kl-visualization .mode-btn {
-                            padding: 8px 20px;
+                            padding: 6px 16px;
                             background: transparent;
-                            color: var(--text-muted, #94a3b8);
+                            color: var(--text-muted, #666);
                             border: none;
-                            border-radius: 20px;
-                            font-size: 0.85em;
+                            border-radius: 4px;
+                            font-size: 0.8em;
                             cursor: pointer;
-                            transition: all 0.3s ease;
-                            text-transform: uppercase;
-                            letter-spacing: 1px;
+                            transition: background 0.2s ease, color 0.2s ease;
+                            font-weight: 500;
                             box-shadow: none;
                         }
 
                         .kl-visualization .mode-btn.active {
-                            background: linear-gradient(135deg, #a855f7, #3b82f6);
+                            background: var(--accent, #4a9eff);
                             color: white;
-                            box-shadow: 0 2px 10px rgba(168, 85, 247, 0.3);
                         }
 
                         .kl-visualization .mode-btn:hover {
-                            transform: none;
-                            box-shadow: none;
-                            color: var(--text-primary, #ffffff);
-                        }
-
-                        .kl-visualization .mode-btn.active:hover {
-                            box-shadow: 0 2px 10px rgba(168, 85, 247, 0.3);
+                            color: var(--text-primary, #f5f5f5);
                         }
                     </style>
 
@@ -810,6 +770,7 @@
 
                 <p>Neither approach is universally superior. The appropriate choice depends on the application, the cost of different types of errors, and our prior beliefs about the structure of the world. What remains constant is the inescapable truth that <strong>compression requires assumption</strong>, and all generalization involves a leap of faith beyond the data we have observed.</p>
             </article>
+            </div>
 
             <!-- Share Section -->
             <section class="post-share">
@@ -836,10 +797,16 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="site-footer">
         <div class="container">
-            <div class="text-center">
-                <p>&copy; 2025 Rohola Zandie. All rights reserved.</p>
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                <p class="mb-0">&copy; 2025 Rohola Zandie</p>
+                <div class="footer-links">
+                    <a href="mailto:rohola@absentia.bio">Email</a>
+                    <a href="https://linkedin.com/in/rohola-zandie" target="_blank">LinkedIn</a>
+                    <a href="https://scholar.google.com/citations?user=xv0jIe0AAAAJ&hl=en" target="_blank">Scholar</a>
+                    <a href="https://github.com/roholazandie" target="_blank">GitHub</a>
+                </div>
             </div>
         </div>
     </footer>
