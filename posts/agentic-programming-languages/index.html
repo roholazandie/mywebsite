@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Theme Detection Script - Must be first to prevent FOUC -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    
+    <title>Agentic Programming Languages - Rohola Zandie</title>
+    <meta name="description" content="How agentic frameworks are reshaping programming — from prompt engineering and declarative paradigms to a new class of constraint-driven languages designed for LLM-powered agents.">
+
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="agentic programming, LLM, prompt engineering, declarative languages, design.md, Prolog, agents, normative constraints, prose constraints, AI">
+    <meta name="author" content="Rohola Zandie">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Agentic Programming Languages">
+    <meta property="og:description" content="How agentic frameworks are reshaping programming — from prompt engineering and declarative paradigms to a new class of constraint-driven languages designed for LLM-powered agents.">
+    <meta property="og:type" content="article">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- MathJax for mathematical notation -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../assets/styles/portfolio.css">
+    <link rel="stylesheet" href="../../assets/styles/blog.css">
+
+    <style>
+        /* Code block header bar */
+        .code-block {
+            margin: 2rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .code-block-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #2a2a3a;
+            padding: 0.55rem 1rem;
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.78rem;
+            color: #888;
+            user-select: none;
+        }
+
+        .code-block-header .dots {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .code-block-header .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red   { background: #ff5f57; }
+        .dot-yellow { background: #febc2e; }
+        .dot-green { background: #28c840; }
+
+        .code-block-header .lang-label {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .code-block pre {
+            margin: 0;
+            border-radius: 0;
+            border: none;
+        }
+
+        [data-theme="light"] .code-block-header {
+            background: #2a2a3a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <strong>Rohola Zandie</strong>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../../blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../persian-blog.html">بلاگ</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-link nav-link theme-toggle" id="themeToggle">
+                            <i data-lucide="sun" class="icon-light"></i>
+                            <i data-lucide="moon" class="icon-dark"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Back to Blog Link -->
+            <a href="../../blog.html" class="back-to-blog">
+                <i data-lucide="arrow-left"></i>
+                Back to Blog
+            </a>
+
+            <!-- Post Header -->
+            <header class="post-header">
+                <h1 class="post-title">Agentic Programming Languages</h1>
+                <div class="post-meta">
+                    <div class="post-meta-item">
+                        <i data-lucide="calendar"></i>
+                        <span>May 2026</span>
+                    </div>
+                    <div class="post-meta-item">
+                        <i data-lucide="user"></i>
+                        <span>Rohola Zandie</span>
+                    </div>
+                    <div class="post-meta-item">
+                        <i data-lucide="clock"></i>
+                        <span>12 min read</span>
+                    </div>
+                </div>
+                <div class="blog-tags justify-content-center">
+                    <span class="tag">AI</span>
+                    <span class="tag">Agents</span>
+                    <span class="tag">LLMs</span>
+                    <span class="tag">Programming Languages</span>
+                    <span class="tag">Prompt Engineering</span>
+                </div>
+            </header>
+
+            <!-- Post Layout with TOC -->
+            <div class="post-layout">
+                <aside class="toc">
+                    <div class="toc-title">Contents</div>
+                </aside>
+
+                <article class="post-content">
+
+                <h2>Introduction</h2>
+
+                <p>With the advent of agentic frameworks, programming has changed dramatically since last year. The initial optimism about "automating the whole software engineering" is starting to show cracks. Companies began rehiring many of their laid-off software engineers. What's gone wrong? Isn't writing code as easy as a sequence of prompts?</p>
+
+                <p>Programmers are still confused, trying to find ways to make agents useful in their workflow. Unlike before, this time it's not about lower-level coding alone. Now, programmers find themselves facing a new layer of challenges that largely stem from where they spend most of their time: the prompts.</p>
+
+                <p><em>Prompt engineering</em> is the name we assign to this new practice. Initially, it seemed that prompt engineering was just natural language, but we slowly realized that we needed a better framework for the "coding agent" to perform better.</p>
+
+                <h2>Design.md</h2>
+
+                <p>The project <a href="https://github.com/google-labs-code/design.md" target="_blank">design.md</a> is an example of the movement toward design languages using LLMs. But to understand their approach, we first have to go back to the emergence of "design languages" themselves. In the early days of computer graphics, developers had to write procedural algorithms to draw shapes and render pixels line by line. Eventually, graphics engines emerged as a set of functions — a kernel capable of doing the "basic work" like drawing a circle or creating a color gradient. At this point, the work shifted toward declaring the <em>what</em> (e.g., <code>display: flex; background: red;</code> in languages like CSS), and then the browser engines "render" it, figuring out the <em>how</em>.</p>
+
+                <p>In computer science, there are two main camps in programming languages. On one side, we have the familiar <strong>imperative programming</strong> languages that emphasize <em>how</em> to solve a problem. On the other, we have <strong>declarative programming</strong>, which emphasizes the <em>what</em> — the constraints.</p>
+
+                <p>Most of what we mean by programming falls within the realm of imperative or procedural languages, in which we design algorithms and step-by-step processes with states that change to create the right flow from inputs to outputs.</p>
+
+                <p>Declarative languages, on the other hand, only describe what the output should be. In SQL, we only specify what we want to select from the data (e.g., all males older than 56 in the database table "people"), without specifying how. These languages work on a set of <em>constraints</em>.</p>
+
+                <p>Now let's return to the design.md project. Its core premise is an extension of CSS — purely based on <strong>Normative constraints</strong> — to broader <strong>Prose constraints</strong>, which are much looser. The design.md approach splits cognitive load into two classes:</p>
+
+                <ul>
+                    <li><strong>The Normative (YAML):</strong> The absolute, machine-readable constants of your world. In design, this is exactly <code>#1A1C1E</code> or <code>16px</code>.</li>
+                    <li><strong>The Prose (Markdown):</strong> The human-readable rationale or "loose constraints." Instead of just declaring a color, the prose can say: <em>this is the primary color</em> (where to use it is up to the agent).</li>
+                </ul>
+
+                <p>This combination is incredibly powerful because LLMs are semantic engines. They need the strict boundaries of normative data so they don't hallucinate values, but they also need the semantic context of the prose to know how and where to apply those values.</p>
+
+                <h2>Agents.md</h2>
+
+                <p>The framework above goes beyond the design case. The irony of history is that most AI frameworks in the early days (during the 1970s) started with the <strong>declarative paradigm</strong>. <em>Prolog</em> was created by the French computer scientist <strong>Alain Colmerauer</strong> in 1972 and served as a very early "question answering" intelligent system.</p>
+
+                <p>To understand it, consider this Prolog example:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header">
+                        <div class="dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <span class="lang-label">Prolog</span>
+                    </div>
+                    <pre><code>mother_child(trude, sally).
+father_child(tom, sally).
+father_child(tom, erica).
+father_child(mike, tom).
+
+sibling(X, Y) :-
+    parent_child(Z, X),
+    parent_child(Z, Y),
+    not(X = Y).
+
+parent_child(X, Y) :- father_child(X, Y).
+parent_child(X, Y) :- mother_child(X, Y).</code></pre>
+                </div>
+
+                <p>This code describes a set of constraints between constants (the people: <code>trude</code>, <code>sally</code>, <code>tom</code>, etc.). We can then query whether <code>sally</code> is the sibling of <code>erica</code>:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header">
+                        <div class="dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <span class="lang-label">Prolog — Query</span>
+                    </div>
+                    <pre><code>?- sibling(sally, erica).
+Yes</code></pre>
+                </div>
+
+                <p>To solve this procedurally (imperatively), we would need to write recursive path-finding. Here it's unnecessary because the engine already implements it. Declarative languages were actually very diverse: used in design, question answering, planning (Action Description Language specifies what actions need to be done, not how), and more.</p>
+
+                <p>Though elegant, these AI programming languages had shortcomings. We could only partially model a problem, and to complete the constraints, we had to keep adding more until it became impossible. These symbolic approaches didn't achieve broad success, except in very specific domains where the data were already in the right format.</p>
+
+                <p>But declarative approaches are far from dead. Recent progress such as design.md is instructive. The constraints are not as rigid as Prolog's, but not as loose as plain natural language. Instead, we have the same two classes:</p>
+
+                <ul>
+                    <li><strong>Normative Constraints:</strong>
+                        <ul>
+                            <li>"All database queries must go through the ORM."</li>
+                            <li>"No direct HTTP calls outside of the <code>/services</code> directory."</li>
+                            <li>"Strictly enforce 3-tier architecture: Controller / Service / Repository."</li>
+                            <li>"Always run tests after disconnecting from database."</li>
+                        </ul>
+                    </li>
+                    <li><strong>Prose Constraints:</strong>
+                        <ul>
+                            <li>"We prefer functional purity in the <code>/utils</code> folder. Avoid mutating state."</li>
+                            <li>"When handling user data, always prioritize explicit error handling over silent failures. The system should fail loud and fail early."</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <p>The second set is the "loose" constraints that were previously impossible to declare. Even though that's the magic part of current LLMs, we have to see the whole picture. Sooner or later, these abilities will become less impressive, and their proper use will become more important.</p>
+
+                <h3>A Shared Schema Language</h3>
+
+                <p><strong>Agentic programming languages</strong> can be the next phase of programming language development — reviving older declarative languages but making them far more useful because we can now close the loop on "uncertainties." However, we need better formatting than what's described above.</p>
+
+                <p>Following the YAML format of design.md, we create a set of constraints with constants. For example, if we have a set of related processes that need to be run frequently — such as auditing code from different perspectives: software engineering correctness, business contracts, internal constraints, domain constraints, regulatory requirements, etc. — they all need to work within the same language so that different agents' results are comparable and communicable throughout the organization.</p>
+
+                <p>A shared YAML schema might look like this:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header">
+                        <div class="dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <span class="lang-label">YAML — _schema.yaml</span>
+                    </div>
+                    <pre><code>version: "1.0"
+
+# Severity levels
+# Domain-specific interpretations live in each agent's SEVERITY GUIDE prose.
+# These are the normative labels and base definitions shared across all agents.
+
+severity:
+  CRITICAL:
+    label: CRITICAL
+    definition: "Cannot ship or use as-is. Requires immediate
+    remediation before the pipeline or task is trusted."
+  MAJOR:
+    label: MAJOR
+    definition: "Significant gap or inconsistency.
+    Fix before scale; the artifact is still directionally useful."
+  MINOR:
+    label: MINOR
+    definition: "Low-risk deviation; cosmetic, clarity,
+    or an affirmative no-issue-found statement."
+
+# Tools
+# Each agent's front matter lists which subset of these tools it has access to.
+
+tools:
+  read_file:
+    description: "Read a file from the project source tree by absolute path."
+  list_files:
+    description: "List files in a directory of the project source tree."
+  list_databases:
+    description: "Enumerate all MongoDB databases and their collections."
+  query_collection:
+    description: "Run an aggregation pipeline or filter
+    query against a MongoDB collection."
+  sample_documents:
+    description: "Fetch N random documents from a MongoDB collection."
+  web_search:
+
+finding_required_fields:
+  - dimension      # the rubric ID being reported on
+  - severity       # one of: CRITICAL | MAJOR | MINOR
+  - evidence       # quoted code, field name, or document value supporting the finding
+  - recommendation # actionable instruction: what to change and to what</code></pre>
+                </div>
+
+                <p>Then you have the "prose" which uses the above constants to communicate with the LLM. For a specific case — an agent that audits biological soundness (the biologist agent) — it becomes:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header">
+                        <div class="dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <span class="lang-label">Markdown — biologist-agent.md</span>
+                    </div>
+                    <pre><code>---
+version: "1.0"
+agent: biologist
+schema: "./_schema.yaml"
+role: "Senior computational biologist"
+scope: "biological correctness of harmonization, controlled vocabularies,
+and layer models"
+runtime_vars:
+  - project_root
+
+tools:
+  - read_file
+  - list_files
+  - sample_documents
+  - report_findings
+  - search_web
+
+dimensions:
+  COARSE_GRAINING:          { required: true, min_findings: 1 }
+  ENUM_COMPLETENESS:        { required: true, min_findings: 1 }
+  CROSS_FIELD_CONSISTENCY:  { required: true, min_findings: 1 }
+
+severity: "{severity}"
+output_contract: "{output_contract}"
+
+report_schema:
+  type: BiologyReport
+  required_fields:
+    - files_reviewed
+    - findings
+    - summary
+---
+
+You are a senior computational biologist with deep expertise in:
+• Receptor pharmacology (IUPHAR/BPS classification standards)
+• Protein biochemistry and functional classification
+  (UniProt/Swiss-Prot, InterPro, Pfam, Gene Ontology nomenclature)
+  ...
+
+## SEVERITY GUIDE
+
+CRITICAL  a downstream user would draw a scientifically wrong conclusion.
+          Examples: a species from a different family collapsed under the
+          wrong genus; a mechanism classified in the wrong direction.
+
+MAJOR     an important gap or misleading label that a biologist would
+          flag in code review but may not cause an immediate error.
+          Examples: a well-known target type unmapped; a receptor
+          subclass not distinguished.</code></pre>
+                </div>
+
+                <p>In prose, we use natural language with more freedom, but it's grounded in the shared constants and enriched with examples. The key insight here is that the normative part (YAML) pins down the vocabulary and data types, while the prose part (Markdown) provides the semantic reasoning context — exactly the kind of combination LLMs excel at.</p>
+
+                <h3>Why This Works</h3>
+
+                <p>One of the main reasons the above framework works well with LLMs is their impressive performance in instruction-based tasks. LLMs fine-tuned on a domain with constrained instructions find it much easier to recognize patterns. For example, it has been shown that LLMs can be fine-tuned to perform much of the chemical reasoning by training on a dataset of molecules and their properties. In many cases, it's non-trivial to determine the interaction relationships between two binding molecules, which normally requires quantum chemistry computations. LLMs excel at seemingly unrelated tasks when they encounter enough examples in a constrained domain — in chemistry, a limited set of atoms and bonds arranged in a sequence, with equally constrained outputs.</p>
+
+                <p>With the same token, LLMs excel when you set up a normative and prose language in which both parties — you and the LLM — know what they "refer to" every time a new instruction or prompt is exchanged. The shared schema becomes a mutual contract, dramatically reducing ambiguity and hallucination.</p>
+
+                </article>
+            </div>
+
+            <!-- Share Section -->
+            <section class="post-share">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="share-content">
+                            <h4>Share this article</h4>
+                            <div class="share-buttons">
+                                <a href="#" class="share-button" data-platform="twitter">
+                                    <i data-lucide="twitter"></i> Twitter
+                                </a>
+                                <a href="#" class="share-button" data-platform="linkedin">
+                                    <i data-lucide="linkedin"></i> LinkedIn
+                                </a>
+                                <a href="#" class="copy-link">
+                                    <i data-lucide="link"></i> Copy Link
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                <p class="mb-0">&copy; 2026 Rohola Zandie</p>
+                <div class="footer-links">
+                    <a href="mailto:rohola@absentia.bio">Email</a>
+                    <a href="https://linkedin.com/in/rohola-zandie" target="_blank">LinkedIn</a>
+                    <a href="https://scholar.google.com/citations?user=xv0jIe0AAAAJ&hl=en" target="_blank">Scholar</a>
+                    <a href="https://github.com/roholazandie" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="../../assets/scripts/portfolio.js"></script>
+    <script src="../../assets/scripts/blog.js"></script>
+</body>
+</html>
