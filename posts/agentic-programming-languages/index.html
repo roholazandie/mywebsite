@@ -13,7 +13,7 @@
     </script>
     
     <title>Agentic Programming Languages - Rohola Zandie</title>
-    <meta name="description" content="How agentic frameworks are reshaping programming — from prompt engineering and declarative paradigms to a new class of constraint-driven languages designed for LLM-powered agents.">
+    <meta name="description" content="How agentic frameworks are reshaping programming ,from prompt engineering and declarative paradigms to a new class of constraint-driven languages designed for LLM-powered agents.">
 
     <!-- SEO Meta Tags -->
     <meta name="keywords" content="agentic programming, LLM, prompt engineering, declarative languages, design.md, Prolog, agents, normative constraints, prose constraints, AI">
@@ -22,7 +22,7 @@
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Agentic Programming Languages">
-    <meta property="og:description" content="How agentic frameworks are reshaping programming — from prompt engineering and declarative paradigms to a new class of constraint-driven languages designed for LLM-powered agents.">
+    <meta property="og:description" content="How agentic frameworks are reshaping programming ,from prompt engineering and declarative paradigms to a new class of constraint-driven languages designed for LLM-powered agents.">
     <meta property="og:type" content="article">
 
     <!-- Favicon -->
@@ -195,15 +195,15 @@
 
                 <h2>Design.md</h2>
 
-                <p>The project <a href="https://github.com/google-labs-code/design.md" target="_blank">design.md</a> is an example of the movement toward design languages using LLMs. But to understand their approach, we first have to go back to the emergence of "design languages" themselves. In the early days of computer graphics, developers had to write procedural algorithms to draw shapes and render pixels line by line. Eventually, graphics engines emerged as a set of functions — a kernel capable of doing the "basic work" like drawing a circle or creating a color gradient. At this point, the work shifted toward declaring the <em>what</em> (e.g., <code>display: flex; background: red;</code> in languages like CSS), and then the browser engines "render" it, figuring out the <em>how</em>.</p>
+                <p>The project <a href="https://github.com/google-labs-code/design.md" target="_blank">design.md</a> is an example of the movement toward design languages using LLMs. But to understand their approach, we first have to go back to the emergence of "design languages" themselves. In the early days of computer graphics, developers had to write procedural algorithms to draw shapes and render pixels line by line. Eventually, graphics engines emerged as a set of functions ,a kernel capable of doing the "basic work" like drawing a circle or creating a color gradient. At this point, the work shifted toward declaring the <em>what</em> (e.g., <code>display: flex; background: red;</code> in languages like CSS), and then the browser engines "render" it, figuring out the <em>how</em>.</p>
 
-                <p>In computer science, there are two main camps in programming languages. On one side, we have the familiar <strong>imperative programming</strong> languages that emphasize <em>how</em> to solve a problem. On the other, we have <strong>declarative programming</strong>, which emphasizes the <em>what</em> — the constraints.</p>
+                <p>In computer science, there are two main camps in programming languages. On one side, we have the familiar <strong>imperative programming</strong> languages that emphasize <em>how</em> to solve a problem. On the other, we have <strong>declarative programming</strong>, which emphasizes the <em>what</em> ,the constraints.</p>
 
                 <p>Most of what we mean by programming falls within the realm of imperative or procedural languages, in which we design algorithms and step-by-step processes with states that change to create the right flow from inputs to outputs.</p>
 
                 <p>Declarative languages, on the other hand, only describe what the output should be. In SQL, we only specify what we want to select from the data (e.g., all males older than 56 in the database table "people"), without specifying how. These languages work on a set of <em>constraints</em>.</p>
 
-                <p>Now let's return to the design.md project. Its core premise is an extension of CSS — purely based on <strong>Normative constraints</strong> — to broader <strong>Prose constraints</strong>, which are much looser. The design.md approach splits cognitive load into two classes:</p>
+                <p>Now let's return to the design.md project. Its core premise is an extension of CSS ,purely based on <strong>Normative constraints</strong> ,to broader <strong>Prose constraints</strong>, which are much looser. The design.md approach splits cognitive load into two classes:</p>
 
                 <ul>
                     <li><strong>The Normative (YAML):</strong> The absolute, machine-readable constants of your world. In design, this is exactly <code>#1A1C1E</code> or <code>16px</code>.</li>
@@ -250,7 +250,7 @@ parent_child(X, Y) :- mother_child(X, Y).</code></pre>
                             <span class="dot dot-yellow"></span>
                             <span class="dot dot-green"></span>
                         </div>
-                        <span class="lang-label">Prolog — Query</span>
+                        <span class="lang-label">Prolog ,Query</span>
                     </div>
                     <pre><code>?- sibling(sally, erica).
 Yes</code></pre>
@@ -283,9 +283,9 @@ Yes</code></pre>
 
                 <h3>A Shared Schema Language</h3>
 
-                <p><strong>Agentic programming languages</strong> can be the next phase of programming language development — reviving older declarative languages but making them far more useful because we can now close the loop on "uncertainties." However, we need better formatting than what's described above.</p>
+                <p><strong>Agentic programming languages</strong> can be the next phase of programming language development ,reviving older declarative languages but making them far more useful because we can now close the loop on "uncertainties." However, we need better formatting than what's described above.</p>
 
-                <p>Following the YAML format of design.md, we create a set of constraints with constants. For example, if we have a set of related processes that need to be run frequently — such as auditing code from different perspectives: software engineering correctness, business contracts, internal constraints, domain constraints, regulatory requirements, etc. — they all need to work within the same language so that different agents' results are comparable and communicable throughout the organization.</p>
+                <p>Following the YAML format of design.md, we create a set of constraints with constants. For example, if we have a set of related processes that need to be run frequently ,such as auditing code from different perspectives: software engineering correctness, business contracts, internal constraints, domain constraints, regulatory requirements, etc. ,they all need to work within the same language so that different agents' results are comparable and communicable throughout the organization.</p>
 
                 <p>A shared YAML schema might look like this:</p>
 
@@ -296,7 +296,7 @@ Yes</code></pre>
                             <span class="dot dot-yellow"></span>
                             <span class="dot dot-green"></span>
                         </div>
-                        <span class="lang-label">YAML — _schema.yaml</span>
+                        <span class="lang-label">YAML ,_schema.yaml</span>
                     </div>
                     <pre><code>version: "1.0"
 
@@ -342,7 +342,7 @@ finding_required_fields:
   - recommendation # actionable instruction: what to change and to what</code></pre>
                 </div>
 
-                <p>Then you have the "prose" which uses the above constants to communicate with the LLM. For a specific case — an agent that audits biological soundness (the biologist agent) — it becomes:</p>
+                <p>Then you have the "prose" which uses the above constants to communicate with the LLM. For a specific case ,an agent that audits biological soundness (the biologist agent) ,it becomes:</p>
 
                 <div class="code-block">
                     <div class="code-block-header">
@@ -351,7 +351,7 @@ finding_required_fields:
                             <span class="dot dot-yellow"></span>
                             <span class="dot dot-green"></span>
                         </div>
-                        <span class="lang-label">Markdown — biologist-agent.md</span>
+                        <span class="lang-label">Markdown ,biologist-agent.md</span>
                     </div>
                     <pre><code>---
 version: "1.0"
@@ -404,13 +404,13 @@ MAJOR     an important gap or misleading label that a biologist would
           subclass not distinguished.</code></pre>
                 </div>
 
-                <p>In prose, we use natural language with more freedom, but it's grounded in the shared constants and enriched with examples. The key insight here is that the normative part (YAML) pins down the vocabulary and data types, while the prose part (Markdown) provides the semantic reasoning context — exactly the kind of combination LLMs excel at.</p>
+                <p>In prose, we use natural language with more freedom, but it's grounded in the shared constants and enriched with examples. The key insight here is that the normative part (YAML) pins down the vocabulary and data types, while the prose part (Markdown) provides the semantic reasoning context ,exactly the kind of combination LLMs excel at.</p>
 
                 <h3>Why This Works</h3>
 
-                <p>One of the main reasons the above framework works well with LLMs is their impressive performance in instruction-based tasks. LLMs fine-tuned on a domain with constrained instructions find it much easier to recognize patterns. For example, it has been shown that LLMs can be fine-tuned to perform much of the chemical reasoning by training on a dataset of molecules and their properties. In many cases, it's non-trivial to determine the interaction relationships between two binding molecules, which normally requires quantum chemistry computations. LLMs excel at seemingly unrelated tasks when they encounter enough examples in a constrained domain — in chemistry, a limited set of atoms and bonds arranged in a sequence, with equally constrained outputs.</p>
+                <p>One of the main reasons the above framework works well with LLMs is their impressive performance in instruction-based tasks. LLMs fine-tuned on a domain with constrained instructions find it much easier to recognize patterns. For example, it has been shown that LLMs can be fine-tuned to perform much of the chemical reasoning by training on a dataset of molecules and their properties. In many cases, it's non-trivial to determine the interaction relationships between two binding molecules, which normally requires quantum chemistry computations. LLMs excel at seemingly unrelated tasks when they encounter enough examples in a constrained domain ,in chemistry, a limited set of atoms and bonds arranged in a sequence, with equally constrained outputs.</p>
 
-                <p>With the same token, LLMs excel when you set up a normative and prose language in which both parties — you and the LLM — know what they "refer to" every time a new instruction or prompt is exchanged. The shared schema becomes a mutual contract, dramatically reducing ambiguity and hallucination.</p>
+                <p>With the same token, LLMs excel when you set up a normative and prose language in which both parties ,you and the LLM ,know what they "refer to" every time a new instruction or prompt is exchanged. The shared schema becomes a mutual contract, dramatically reducing ambiguity and hallucination.</p>
 
                 </article>
             </div>
