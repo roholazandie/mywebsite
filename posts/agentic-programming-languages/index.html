@@ -122,6 +122,16 @@
             background: #1a1b2e;
         }
 
+        /* Custom Prolog token colors */
+        .pl-functor { color: #61afef; }          /* blue  — predicates/functors */
+        .pl-var     { color: #e5c07b; }          /* yellow — variables (X, Y, Z) */
+        .pl-atom    { color: #98c379; }          /* green  — constants / atoms */
+        .pl-builtin { color: #c678dd; }          /* purple — not, is, true … */
+        .pl-op      { color: #e06c75; }          /* red    — :- ?- --> */
+        .pl-num     { color: #d19a66; }          /* orange — numbers */
+        .pl-comment { color: #5c6370; font-style: italic; }
+        .pl-punc    { color: #abb2bf; }          /* grey   — ( ) , . |  */
+
         [data-theme="light"] .code-block-header {
             background: #2a2a3a;
         }
@@ -500,6 +510,85 @@ MAJOR     an important gap or misleading label that a biologist would
     <!-- Custom JavaScript -->
     <script src="../../assets/scripts/portfolio.js"></script>
     <script src="../../assets/scripts/blog.js"></script>
-    <script>hljs.highlightAll();</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            /* ── Custom Prolog highlighter ───────────────────────────── */
+            function escHtml(s) {
+                return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            }
+
+            function highlightProlog(raw) {
+                const BUILTINS = new Set(['not', 'is', 'true', 'fail', 'assert',
+                                          'retract', 'write', 'nl', 'read']);
+                let html = '', i = 0;
+                while (i < raw.length) {
+                    // line comment
+                    if (raw[i] === '%') {
+                        let end = raw.indexOf('\n', i);
+                        if (end === -1) end = raw.length;
+                        html += '<span class="pl-comment">' + escHtml(raw.slice(i, end)) + '</span>';
+                        i = end;
+                        continue;
+                    }
+                    // variable  (starts with uppercase or _)
+                    if (/[A-Z_]/.test(raw[i])) {
+                        let j = i;
+                        while (j < raw.length && /[\w]/.test(raw[j])) j++;
+                        if (j > i) {
+                            html += '<span class="pl-var">' + escHtml(raw.slice(i, j)) + '</span>';
+                            i = j; continue;
+                        }
+                    }
+                    // lowercase atom / functor / builtin
+                    if (/[a-z]/.test(raw[i])) {
+                        let j = i;
+                        while (j < raw.length && /[\w]/.test(raw[j])) j++;
+                        const word = raw.slice(i, j);
+                        if (BUILTINS.has(word)) {
+                            html += '<span class="pl-builtin">' + word + '</span>';
+                        } else if (raw[j] === '(') {
+                            html += '<span class="pl-functor">' + word + '</span>';
+                        } else {
+                            html += '<span class="pl-atom">' + word + '</span>';
+                        }
+                        i = j; continue;
+                    }
+                    // operators  :-  ?-  -->
+                    if (raw[i] === ':' && raw[i+1] === '-') {
+                        html += '<span class="pl-op">:-</span>'; i += 2; continue;
+                    }
+                    if (raw[i] === '?' && raw[i+1] === '-') {
+                        html += '<span class="pl-op">?-</span>'; i += 2; continue;
+                    }
+                    // numbers
+                    if (/[0-9]/.test(raw[i])) {
+                        let j = i;
+                        while (j < raw.length && /[0-9.]/.test(raw[j])) j++;
+                        html += '<span class="pl-num">' + raw.slice(i, j) + '</span>';
+                        i = j; continue;
+                    }
+                    // punctuation
+                    if ('(),.|'.includes(raw[i])) {
+                        html += '<span class="pl-punc">' + escHtml(raw[i]) + '</span>';
+                        i++; continue;
+                    }
+                    html += escHtml(raw[i]); i++;
+                }
+                return html;
+            }
+
+            // Apply custom highlighting to Prolog blocks
+            document.querySelectorAll('code.language-prolog').forEach(function (block) {
+                block.innerHTML = highlightProlog(block.textContent);
+                block.classList.add('hljs');
+            });
+
+            // Use highlight.js for all other blocks (YAML, Markdown…)
+            document.querySelectorAll('code:not(.language-prolog)').forEach(function (block) {
+                hljs.highlightElement(block);
+            });
+        });
+    </script>
 </body>
 </html>
