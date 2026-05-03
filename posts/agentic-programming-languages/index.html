@@ -49,6 +49,13 @@
         };
     </script>
 
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/prolog.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/markdown.min.js"></script>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../assets/styles/portfolio.css">
     <link rel="stylesheet" href="../../assets/styles/blog.css">
@@ -101,6 +108,18 @@
             margin: 0;
             border-radius: 0;
             border: none;
+        }
+
+        .code-block pre code.hljs {
+            border-radius: 0;
+            padding: 1.25rem 1.5rem;
+            font-size: 0.85rem;
+            line-height: 1.65;
+            background: #1a1b2e;
+        }
+
+        [data-theme="light"] .code-block pre code.hljs {
+            background: #1a1b2e;
         }
 
         [data-theme="light"] .code-block-header {
@@ -248,7 +267,7 @@
                         </div>
                         <span class="lang-label">Prolog</span>
                     </div>
-                    <pre><code>mother_child(trude, sally).
+                    <pre><code class="language-prolog">mother_child(trude, sally).
 father_child(tom, sally).
 father_child(tom, erica).
 father_child(mike, tom).
@@ -273,7 +292,7 @@ parent_child(X, Y) :- mother_child(X, Y).</code></pre>
                         </div>
                         <span class="lang-label">Prolog ,Query</span>
                     </div>
-                    <pre><code>?- sibling(sally, erica).
+                    <pre><code class="language-prolog">?- sibling(sally, erica).
 Yes</code></pre>
                 </div>
 
@@ -319,7 +338,7 @@ Yes</code></pre>
                         </div>
                         <span class="lang-label">YAML ,_schema.yaml</span>
                     </div>
-                    <pre><code>version: "1.0"
+                    <pre><code class="language-yaml">version: "1.0"
 
 # Severity levels
 # Domain-specific interpretations live in each agent's SEVERITY GUIDE prose.
@@ -374,7 +393,7 @@ finding_required_fields:
                         </div>
                         <span class="lang-label">Markdown ,biologist-agent.md</span>
                     </div>
-                    <pre><code>---
+                    <pre><code class="language-yaml">---
 version: "1.0"
 agent: biologist
 schema: "./_schema.yaml"
@@ -481,5 +500,6 @@ MAJOR     an important gap or misleading label that a biologist would
     <!-- Custom JavaScript -->
     <script src="../../assets/scripts/portfolio.js"></script>
     <script src="../../assets/scripts/blog.js"></script>
+    <script>hljs.highlightAll();</script>
 </body>
 </html>
