@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Theme Detection Script - Must be first to prevent FOUC -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+
+    <title>زبان‌های برنامه‌نویسی عامل‌محور - روح الله زندیه</title>
+    <meta name="description" content="چگونه چارچوب‌های عامل‌محور برنامه‌نویسی را دگرگون می‌کنند ،از مهندسی پرامپت و پارادایم‌های اعلانی تا نسل تازه‌ای از زبان‌های مبتنی بر قید برای عامل‌های مبتنی بر LLM.">
+
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="برنامه‌نویسی عامل‌محور، LLM، مهندسی پرامپت، زبان‌های اعلانی، design.md، Prolog، عامل‌ها، قیود هنجاری، قیود متنی، هوش مصنوعی">
+    <meta name="author" content="Rohola Zandie">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="زبان‌های برنامه‌نویسی عامل‌محور">
+    <meta property="og:description" content="چگونه چارچوب‌های عامل‌محور برنامه‌نویسی را دگرگون می‌کنند ،از مهندسی پرامپت و پارادایم‌های اعلانی تا نسل تازه‌ای از زبان‌های مبتنی بر قید برای عامل‌های مبتنی بر LLM.">
+    <meta property="og:type" content="article">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- MathJax for mathematical notation -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../assets/styles/portfolio.css">
+    <link rel="stylesheet" href="../../assets/styles/blog.css">
+
+    <style>
+        /* Code block header bar */
+        .code-block {
+            margin: 2rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+            direction: ltr;
+            text-align: left;
+        }
+
+        .code-block-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #2a2a3a;
+            padding: 0.55rem 1rem;
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.78rem;
+            color: #888;
+            user-select: none;
+        }
+
+        .code-block-header .dots {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .code-block-header .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red   { background: #ff5f57; }
+        .dot-yellow { background: #febc2e; }
+        .dot-green { background: #28c840; }
+
+        .code-block-header .lang-label {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .code-block pre {
+            margin: 0;
+            border-radius: 0;
+            border: none;
+        }
+
+        [data-theme="light"] .code-block-header {
+            background: #2a2a3a;
+        }
+    </style>
+</head>
+<body class="persian-blog">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <strong>Rohola Zandie</strong>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">خانه</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../../persian-blog.html">بلاگ</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-link nav-link theme-toggle" id="themeToggle">
+                            <i data-lucide="sun" class="icon-light"></i>
+                            <i data-lucide="moon" class="icon-dark"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Back to Blog Link -->
+            <a href="../../persian-blog.html" class="back-to-blog">
+                <i data-lucide="arrow-right"></i>
+                بازگشت به بلاگ
+            </a>
+
+            <!-- Post Header -->
+            <header class="post-header">
+                <h1 class="post-title">زبان‌های برنامه‌نویسی عامل‌محور</h1>
+                <div class="post-meta">
+                    <div class="post-meta-item">
+                        <i data-lucide="calendar"></i>
+                        <span>اردیبهشت ۱۴۰۵</span>
+                    </div>
+                    <div class="post-meta-item">
+                        <i data-lucide="user"></i>
+                        <span>روح الله زندیه</span>
+                    </div>
+                    <div class="post-meta-item">
+                        <i data-lucide="clock"></i>
+                        <span>۱۲ دقیقه مطالعه</span>
+                    </div>
+                </div>
+                <div class="blog-tags justify-content-center">
+                    <span class="tag">هوش مصنوعی</span>
+                    <span class="tag">عامل‌ها</span>
+                    <span class="tag">LLM</span>
+                    <span class="tag">زبان‌های برنامه‌نویسی</span>
+                    <span class="tag">مهندسی پرامپت</span>
+                </div>
+            </header>
+
+            <!-- Post Layout with TOC -->
+            <div class="post-layout">
+                <aside class="toc">
+                    <div class="toc-title">فهرست مطالب</div>
+                </aside>
+
+                <article class="post-content">
+
+                <h2>مقدمه</h2>
+
+                <p>با ظهور چارچوب‌های عامل‌محور (agentic frameworks)، برنامه‌نویسی از سال گذشته به‌طور چشمگیری تغییر کرده است. خوش‌بینی اولیه دربارهٔ «خودکار کردن کل مهندسی نرم‌افزار» کم‌کم ترک برداشته است. شرکت‌ها شروع به استخدام دوبارهٔ بسیاری از مهندسان نرم‌افزاری کرده‌اند که قبلاً اخراج شده بودند. چه چیزی اشتباه پیش رفته است؟ مگر نوشتن کد به سادگیِ یک توالی از پرامپت‌ها نیست؟</p>
+
+                <p>برنامه‌نویسان همچنان سردرگم‌اند و در پی یافتن راه‌هایی هستند تا عامل‌ها را در گردش‌کار خود مفید سازند. بر خلاف گذشته، این بار موضوع تنها به کدنویسی در سطوح پایین مربوط نمی‌شود. اکنون برنامه‌نویسان با لایه‌ای جدید از چالش‌ها روبه‌رو هستند که عمدتاً از همان جایی برمی‌خیزد که بیشتر وقتشان را در آن می‌گذرانند: پرامپت‌ها.</p>
+
+                <p><em>مهندسی پرامپت</em> (prompt engineering) نامی است که به این رویّهٔ نوظهور داده‌ایم. در ابتدا چنین به نظر می‌رسید که مهندسی پرامپت چیزی جز زبان طبیعی نیست، اما به‌تدریج دریافتیم که برای آنکه «عامل کدنویس» بهتر عمل کند، به چارچوبی بهتر نیاز داریم.</p>
+
+                <h2>Design.md</h2>
+
+                <p>پروژهٔ <a href="https://github.com/google-labs-code/design.md" target="_blank">design.md</a> نمونه‌ای از حرکت به‌سوی «زبان‌های طراحی» با استفاده از LLMها است. اما برای درک رویکرد آن‌ها، نخست باید به ظهور خودِ «زبان‌های طراحی» بازگردیم. در روزهای آغازین گرافیک رایانه‌ای، توسعه‌دهندگان مجبور بودند الگوریتم‌های رویه‌ای (procedural) بنویسند تا اشکال را ترسیم کنند و پیکسل‌ها را خط‌به‌خط ارائه (render) دهند. سرانجام موتورهای گرافیکی به‌عنوان مجموعه‌ای از توابع پدید آمدند ،هسته‌ای که قادر بود «کارهای پایه» را انجام دهد، مانند کشیدن یک دایره یا ساختن یک گرادیان رنگی. در این نقطه، کار به‌سمت اعلان <em>«چه چیزی»</em> چرخید (مثلاً <code>display: flex; background: red;</code> در زبان‌هایی مانند CSS)، و سپس موتورهای مرورگر آن را «ارائه» می‌دهند و خود <em>«چگونگی»</em> را پیدا می‌کنند.</p>
+
+                <p>در علوم کامپیوتر، در زبان‌های برنامه‌نویسی دو اردوگاه اصلی وجود دارد. در یک‌سو، زبان‌های آشنای <strong>برنامه‌نویسی دستوری</strong> (imperative) را داریم که بر <em>چگونگی</em> حل یک مسئله تأکید می‌کنند. در سوی دیگر، <strong>برنامه‌نویسی اعلانی</strong> (declarative) را داریم که بر <em>چه‌چیزی</em> ،یعنی قیدها ،تأکید دارد.</p>
+
+                <p>بیشترِ آنچه از برنامه‌نویسی در ذهن داریم، در قلمرو زبان‌های دستوری یا رویه‌ای می‌گنجد؛ زبان‌هایی که در آن‌ها الگوریتم‌ها و فرآیندهای گام‌به‌گام را با حالت‌هایی که تغییر می‌کنند طراحی می‌کنیم تا جریان درستی از ورودی‌ها به خروجی‌ها ایجاد شود.</p>
+
+                <p>زبان‌های اعلانی، در مقابل، تنها توصیف می‌کنند که خروجی چه باید باشد. در SQL ما فقط مشخص می‌کنیم چه چیزی را می‌خواهیم از داده‌ها انتخاب کنیم (مثلاً تمام مردهای بالای ۵۶ سال در جدول «people» در پایگاه‌داده)، بدون اینکه «چگونگی» آن را تعیین کنیم. این زبان‌ها بر مجموعه‌ای از <em>قیدها</em> (constraints) کار می‌کنند.</p>
+
+                <p>حالا به پروژهٔ design.md بازگردیم. ایدهٔ اصلی آن، گسترشِ CSS است ،که صرفاً مبتنی بر <strong>قیدهای هنجاری (Normative constraints)</strong> است ،به سمت <strong>قیدهای متنی (Prose constraints)</strong> گسترده‌تر، که بسیار سست‌ترند. رویکرد design.md بار شناختی را به دو دسته تقسیم می‌کند:</p>
+
+                <ul>
+                    <li><strong>هنجاری (YAML):</strong> ثابت‌های مطلق و قابل‌خوانش‌توسط‌ماشینِ جهانِ شما. در طراحی، این دقیقاً چیزی مانند <code>#1A1C1E</code> یا <code>16px</code> است.</li>
+                    <li><strong>متنی (Markdown):</strong> دلیل‌آوری‌های قابل‌خوانش برای انسان یا «قیدهای سست». به‌جای آنکه فقط یک رنگ را اعلان کنیم، متن می‌تواند بگوید: <em>این رنگ اصلی است</em> (و اینکه کجا باید استفاده شود به‌عهدهٔ عامل است).</li>
+                </ul>
+
+                <p>این ترکیب فوق‌العاده قدرتمند است؛ زیرا LLMها موتورهای معنایی‌اند. آن‌ها به مرزهای سختِ داده‌های هنجاری نیاز دارند تا مقادیر را توهم نکنند، اما در عین حال به بافت معناییِ متن (prose) نیز نیاز دارند تا بدانند چگونه و کجا آن مقادیر را به‌کار ببرند.</p>
+
+                <h2>Agents.md</h2>
+
+                <p>چارچوبی که در بالا گفتیم فراتر از مورد طراحی می‌رود. طنزِ تاریخ آن است که بیشتر چارچوب‌های هوش مصنوعی در روزهای آغازین (در دههٔ ۱۹۷۰) با <strong>پارادایم اعلانی</strong> آغاز شدند. <em>Prolog</em> در سال ۱۹۷۲ توسط دانشمند کامپیوتر فرانسوی <strong>آلن کولمراوئر</strong> (Alain Colmerauer) ساخته شد و به‌عنوان یک سیستم هوشمندِ بسیار ابتداییِ «پرسش‌وپاسخ» عمل می‌کرد.</p>
+
+                <p>برای درک آن، این مثال Prolog را در نظر بگیرید:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header">
+                        <div class="dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <span class="lang-label">Prolog</span>
+                    </div>
+                    <pre><code>mother_child(trude, sally).
+father_child(tom, sally).
+father_child(tom, erica).
+father_child(mike, tom).
+
+sibling(X, Y) :-
+    parent_child(Z, X),
+    parent_child(Z, Y),
+    not(X = Y).
+
+parent_child(X, Y) :- father_child(X, Y).
+parent_child(X, Y) :- mother_child(X, Y).</code></pre>
+                </div>
+
+                <p>این کد مجموعه‌ای از قیدها میان ثابت‌ها (افراد: <code>trude</code>، <code>sally</code>، <code>tom</code> و …) را توصیف می‌کند. سپس می‌توانیم پرسش کنیم که آیا <code>sally</code> خواهرِ <code>erica</code> است یا نه:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header">
+                        <div class="dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <span class="lang-label">Prolog ,Query</span>
+                    </div>
+                    <pre><code>?- sibling(sally, erica).
+Yes</code></pre>
+                </div>
+
+                <p>برای حل این مسئله به‌شیوهٔ رویه‌ای (دستوری)، ناچار بودیم یک مسیریابیِ بازگشتی (recursive) بنویسیم. اینجا چنین کاری لازم نیست، چون موتور آن را پیاده‌سازی کرده است. زبان‌های اعلانی در واقع بسیار متنوع بوده‌اند: در طراحی، پرسش‌وپاسخ، برنامه‌ریزی (Action Description Language تعیین می‌کند چه کنش‌هایی باید انجام شوند، نه چگونگی) و موارد دیگر.</p>
+
+                <p>هرچند زیبا، این زبان‌های برنامه‌نویسی هوش مصنوعی کاستی‌هایی داشتند. ما تنها می‌توانستیم یک مسئله را به‌طور جزئی مدل کنیم و برای کامل‌کردنِ قیدها ناچار بودیم آن‌قدر بر آن‌ها بیفزاییم تا کار ناممکن شود. این رویکردهای نمادین (symbolic) موفقیت گسترده‌ای کسب نکردند، مگر در حوزه‌های بسیار خاصی که داده‌ها از پیش در قالب درست بودند.</p>
+
+                <p>اما رویکردهای اعلانی به‌هیچ‌وجه مرده نیستند. پیشرفت‌های اخیر مانند design.md آموزنده‌اند. قیدها به‌اندازهٔ Prolog سختگیرانه نیستند، اما به‌اندازهٔ زبان طبیعی محض هم سست نیستند. در عوض، همان دو دستهٔ پیشین را داریم:</p>
+
+                <ul>
+                    <li><strong>قیدهای هنجاری:</strong>
+                        <ul>
+                            <li>«تمام پرس‌وجوهای پایگاه‌داده باید از طریق ORM انجام شوند.»</li>
+                            <li>«هیچ فراخوانیِ HTTP مستقیمی خارج از مسیر <code>/services</code> مجاز نیست.»</li>
+                            <li>«معماری سه‌لایه را با سختگیری اعمال کن: Controller / Service / Repository.»</li>
+                            <li>«همیشه پس از قطع اتصال از پایگاه‌داده، تست‌ها را اجرا کن.»</li>
+                        </ul>
+                    </li>
+                    <li><strong>قیدهای متنی:</strong>
+                        <ul>
+                            <li>«ترجیح می‌دهیم در پوشهٔ <code>/utils</code> خلوصِ تابعی (functional purity) را رعایت کنیم. از تغییر حالت بپرهیزید.»</li>
+                            <li>«هنگام کار با دادهٔ کاربر، همواره مدیریت خطای صریح را بر شکست‌های خاموش ترجیح بده. سامانه باید بلند و زود شکست بخورد.»</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <p>دستهٔ دوم همان قیدهای «سست» است که پیش‌تر اعلان آن‌ها ناممکن بود. هرچند این بخش جادویی LLMهای کنونی است، باید کل تصویر را ببینیم. دیر یا زود این توانایی‌ها کم‌جذابیت‌تر خواهند شد و استفادهٔ درست از آن‌ها اهمیت بیشتری خواهد یافت.</p>
+
+                <h3>یک زبان طرحوارهٔ مشترک</h3>
+
+                <p><strong>زبان‌های برنامه‌نویسی عامل‌محور</strong> می‌توانند فاز بعدی توسعهٔ زبان‌های برنامه‌نویسی باشند ،احیای زبان‌های اعلانیِ قدیمی، اما بسیار کاربردی‌تر، چون اکنون می‌توانیم حلقهٔ «عدم‌قطعیت‌ها» را ببندیم. با این حال، به قالب‌بندیِ بهتری از آنچه در بالا توصیف شد نیاز داریم.</p>
+
+                <p>با پیروی از فرمت YAMLِ design.md، مجموعه‌ای از قیدها را همراه با ثابت‌ها می‌سازیم. برای نمونه، اگر مجموعه‌ای از فرآیندهای مرتبط داشته باشیم که باید بارها اجرا شوند ،مانند ممیزیِ کد از منظرهای مختلف: درستیِ مهندسیِ نرم‌افزار، قراردادهای کسب‌وکار، قیدهای داخلی، قیدهای دامنه، الزامات قانونی و غیره ،همگی باید در یک زبان مشترک کار کنند تا نتایج عامل‌های مختلف قابل‌مقایسه و قابل‌انتقال در سراسر سازمان باشند.</p>
+
+                <p>یک طرحوارهٔ YAMLِ مشترک ممکن است چنین باشد:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header">
+                        <div class="dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <span class="lang-label">YAML ,_schema.yaml</span>
+                    </div>
+                    <pre><code>version: "1.0"
+
+# Severity levels
+# Domain-specific interpretations live in each agent's SEVERITY GUIDE prose.
+# These are the normative labels and base definitions shared across all agents.
+
+severity:
+  CRITICAL:
+    label: CRITICAL
+    definition: "Cannot ship or use as-is. Requires immediate
+    remediation before the pipeline or task is trusted."
+  MAJOR:
+    label: MAJOR
+    definition: "Significant gap or inconsistency.
+    Fix before scale; the artifact is still directionally useful."
+  MINOR:
+    label: MINOR
+    definition: "Low-risk deviation; cosmetic, clarity,
+    or an affirmative no-issue-found statement."
+
+# Tools
+# Each agent's front matter lists which subset of these tools it has access to.
+
+tools:
+  read_file:
+    description: "Read a file from the project source tree by absolute path."
+  list_files:
+    description: "List files in a directory of the project source tree."
+  list_databases:
+    description: "Enumerate all MongoDB databases and their collections."
+  query_collection:
+    description: "Run an aggregation pipeline or filter
+    query against a MongoDB collection."
+  sample_documents:
+    description: "Fetch N random documents from a MongoDB collection."
+  web_search:
+
+finding_required_fields:
+  - dimension      # the rubric ID being reported on
+  - severity       # one of: CRITICAL | MAJOR | MINOR
+  - evidence       # quoted code, field name, or document value supporting the finding
+  - recommendation # actionable instruction: what to change and to what</code></pre>
+                </div>
+
+                <p>سپس بخش «متنی» (prose) را داریم که از ثابت‌های بالا برای ارتباط با LLM استفاده می‌کند. برای یک مورد خاص ،عاملی که سلامتِ زیست‌شناختی را ممیزی می‌کند (عامل زیست‌شناس) ،به این صورت می‌شود:</p>
+
+                <div class="code-block">
+                    <div class="code-block-header">
+                        <div class="dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <span class="lang-label">Markdown ,biologist-agent.md</span>
+                    </div>
+                    <pre><code>---
+version: "1.0"
+agent: biologist
+schema: "./_schema.yaml"
+role: "Senior computational biologist"
+scope: "biological correctness of harmonization, controlled vocabularies,
+and layer models"
+runtime_vars:
+  - project_root
+
+tools:
+  - read_file
+  - list_files
+  - sample_documents
+  - report_findings
+  - search_web
+
+dimensions:
+  COARSE_GRAINING:          { required: true, min_findings: 1 }
+  ENUM_COMPLETENESS:        { required: true, min_findings: 1 }
+  CROSS_FIELD_CONSISTENCY:  { required: true, min_findings: 1 }
+
+severity: "{severity}"
+output_contract: "{output_contract}"
+
+report_schema:
+  type: BiologyReport
+  required_fields:
+    - files_reviewed
+    - findings
+    - summary
+---
+
+You are a senior computational biologist with deep expertise in:
+• Receptor pharmacology (IUPHAR/BPS classification standards)
+• Protein biochemistry and functional classification
+  (UniProt/Swiss-Prot, InterPro, Pfam, Gene Ontology nomenclature)
+  ...
+
+## SEVERITY GUIDE
+
+CRITICAL  a downstream user would draw a scientifically wrong conclusion.
+          Examples: a species from a different family collapsed under the
+          wrong genus; a mechanism classified in the wrong direction.
+
+MAJOR     an important gap or misleading label that a biologist would
+          flag in code review but may not cause an immediate error.
+          Examples: a well-known target type unmapped; a receptor
+          subclass not distinguished.</code></pre>
+                </div>
+
+                <p>در بخش متنی، از زبان طبیعی با آزادیِ بیشتر بهره می‌بریم، اما این آزادی بر بستر ثابت‌های مشترک نشسته و با مثال‌ها غنی شده است. نکتهٔ کلیدی این است که بخش هنجاری (YAML) واژگان و انواع داده را میخکوب می‌کند، در حالی‌که بخش متنی (Markdown) بافتِ استدلال معنایی را فراهم می‌آورد ،دقیقاً همان نوع ترکیبی که LLMها در آن می‌درخشند.</p>
+
+                <h3>چرا این کار جواب می‌دهد</h3>
+
+                <p>یکی از دلایل اصلی موفقیت چارچوب بالا با LLMها، عملکرد چشمگیر آن‌ها در وظایف مبتنی بر دستورالعمل (instruction-based) است. LLMهایی که روی یک دامنه با دستورالعمل‌های قیددار تنظیم‌دقیق (fine-tuned) شده‌اند، تشخیص الگو را به‌مراتب آسان‌تر می‌یابند. برای نمونه، نشان داده شده که می‌توان LLMها را تنظیم‌دقیق کرد تا بخش زیادی از استدلال شیمیایی را با آموزش روی مجموعه‌ای از مولکول‌ها و ویژگی‌هایشان انجام دهند. در بسیاری موارد تعیین روابط برهم‌کنشی میان دو مولکولِ متصل‌شونده ساده نیست و معمولاً نیازمند محاسباتِ شیمیِ کوانتومی است. LLMها در وظایفی به‌ظاهر نامرتبط می‌درخشند، آن‌گاه که در یک دامنهٔ قیدمند با مثال‌های کافی روبه‌رو شوند ،در شیمی، مجموعه‌ای محدود از اتم‌ها و پیوندها که در یک توالی چیده شده‌اند، با خروجی‌هایی به همان اندازه قیددار.</p>
+
+                <p>به همین ترتیب، LLMها زمانی به اوج می‌رسند که شما زبانی هنجاری و متنی برپا کنید که در آن هر دو طرف ،شما و LLM ،بدانند هر بار که دستورالعمل یا پرامپت تازه‌ای رد و بدل می‌شود، به چه چیز «ارجاع» می‌دهند. طرحوارهٔ مشترک به یک قراردادِ متقابل تبدیل می‌شود و ابهام و توهم را به‌شدت کاهش می‌دهد.</p>
+
+                </article>
+            </div>
+
+            <!-- Share Section -->
+            <section class="post-share">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="share-content">
+                            <h4>این مقاله را به اشتراک بگذارید</h4>
+                            <div class="share-buttons">
+                                <a href="#" class="share-button" data-platform="twitter">
+                                    <i data-lucide="twitter"></i> توییتر
+                                </a>
+                                <a href="#" class="share-button" data-platform="linkedin">
+                                    <i data-lucide="linkedin"></i> لینکدین
+                                </a>
+                                <a href="#" class="copy-link">
+                                    <i data-lucide="link"></i> کپی لینک
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                <p class="mb-0">&copy; 2026 Rohola Zandie</p>
+                <div class="footer-links">
+                    <a href="mailto:rohola@absentia.bio">Email</a>
+                    <a href="https://linkedin.com/in/rohola-zandie" target="_blank">LinkedIn</a>
+                    <a href="https://scholar.google.com/citations?user=xv0jIe0AAAAJ&hl=en" target="_blank">Scholar</a>
+                    <a href="https://github.com/roholazandie" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="../../assets/scripts/portfolio.js"></script>
+    <script src="../../assets/scripts/blog.js"></script>
+    <script src="../../assets/scripts/persian-blog.js"></script>
+</body>
+</html>
